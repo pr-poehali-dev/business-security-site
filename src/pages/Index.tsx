@@ -391,7 +391,8 @@ const Index = () => {
             <div>
               <h3 className="font-semibold mb-4">Контакты</h3>
               <div className="space-y-2 text-sm text-slate-400">
-                <div>+7 (495) 123-45-67</div>
+                <div>+7 (978) 713-39-59
++7 (978) 910 77-10</div>
                 <div>info@securitytech.ru</div>
                 <div>Москва, ул. Технологическая, 15</div>
               </div>
