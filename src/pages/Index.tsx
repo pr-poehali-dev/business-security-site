@@ -1,33 +1,47 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 import Icon from '@/components/ui/icon';
 
 const Index = () => {
   const services = [
     {
-      title: "Системы АПС",
-      description: "Проектирование и монтаж автоматических пожарных сигнализаций",
+      title: "Автоматические пожарные системы (АПС)",
+      description: "Проектирование и монтаж систем пожарной сигнализации",
       icon: "Flame",
-      features: ["Дымовые детекторы", "Тепловые извещатели", "Панели управления"]
+      features: ["Датчики дыма и тепла", "Оповещение о пожаре", "Автоматическое пожаротушение"]
     },
     {
-      title: "Видеонаблюдение",
-      description: "Современные системы IP-видеонаблюдения и аналитики",
+      title: "Системы видеонаблюдения",
+      description: "Современные решения для безопасности объектов",
       icon: "Camera",
-      features: ["HD камеры", "Облачное хранение", "Мобильный доступ"]
+      features: ["HD/4K камеры", "Удаленный доступ", "Интеллектуальная аналитика"]
     },
     {
-      title: "Контроль доступа",
-      description: "СКУД для защиты периметра и контроля проходов",
+      title: "Системы контроля доступа (СКУД)",
+      description: "Контроль и управление доступом персонала",
+      icon: "Lock",
+      features: ["Карточные замки", "Биометрия", "Временные зоны"]
+    },
+    {
+      title: "Охранная сигнализация",
+      description: "Защита от несанкционированного проникновения",
       icon: "Shield",
-      features: ["Биометрия", "Карточные системы", "Турникеты"]
+      features: ["Датчики движения", "Тревожная кнопка", "Связь с ЧОП"]
     },
     {
-      title: "Мониторинг",
-      description: "24/7 диспетчеризация и удаленное наблюдение",
-      icon: "Monitor",
-      features: ["ПЦН интеграция", "SMS уведомления", "Web-мониторинг"]
+      title: "Системы оповещения",
+      description: "Речевое и звуковое оповещение персонала",
+      icon: "Speaker",
+      features: ["Трансляция объявлений", "Зональное управление", "Аварийное оповещение"]
+    },
+    {
+      title: "Интеграция систем",
+      description: "Объединение всех систем безопасности",
+      icon: "Network",
+      features: ["Единая платформа", "Централизованное управление", "Автоматические сценарии"]
     }
   ];
 
@@ -53,10 +67,21 @@ const Index = () => {
   ];
 
   const certificates = [
-    "Лицензия МЧС России",
-    "ISO 9001:2015", 
-    "Партнер Болид",
-    "Сертификат Hikvision"
+    {
+      title: "Лицензия МЧС",
+      number: "№ 3/02570 от 15.04.2023",
+      description: "Деятельность по монтажу, техническому обслуживанию и ремонту средств обеспечения пожарной безопасности"
+    },
+    {
+      title: "ISO 9001:2015",
+      number: "Сертификат № RU22/3456",
+      description: "Система менеджмента качества в области проектирования систем безопасности"
+    },
+    {
+      title: "Допуск СРО",
+      number: "№ 177-2023-5570180370",
+      description: "Проектирование зданий и сооружений I и II уровней ответственности"
+    }
   ];
 
   return (
@@ -128,7 +153,7 @@ const Index = () => {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
               <Card key={index} className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group">
                 <CardHeader className="text-center pb-4">
@@ -239,15 +264,17 @@ const Index = () => {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-3 gap-8">
             {certificates.map((cert, index) => (
-              <Card key={index} className="text-center hover:shadow-md transition-shadow">
-                <CardHeader className="pb-2">
-                  <div className="mx-auto w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-3">
-                    <Icon name="Award" className="h-6 w-6 text-primary" />
+              <Card key={index} className="text-center hover:shadow-xl transition-all duration-300">
+                <CardContent className="p-8">
+                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Icon name="Award" className="h-8 w-8 text-primary" />
                   </div>
-                  <CardTitle className="text-sm font-medium">{cert}</CardTitle>
-                </CardHeader>
+                  <h3 className="font-semibold text-lg mb-2">{cert.title}</h3>
+                  <p className="text-primary font-medium mb-3">{cert.number}</p>
+                  <p className="text-gray-600 text-sm">{cert.description}</p>
+                </CardContent>
               </Card>
             ))}
           </div>
@@ -261,7 +288,7 @@ const Index = () => {
             <div>
               <h2 className="text-4xl font-bold mb-6">Свяжитесь с нами</h2>
               <p className="text-lg mb-8 opacity-90">
-                Получите консультацию по техническим решениям и расчет стоимости проекта
+                Оставьте заявку и наш специалист свяжется с вами в течение 30 минут
               </p>
               
               <div className="space-y-6">
@@ -276,14 +303,14 @@ const Index = () => {
                   <Icon name="Mail" className="h-6 w-6 mr-4 text-primary" />
                   <div>
                     <div className="font-semibold">info@securitytech.ru</div>
-                    <div className="text-sm opacity-75">Техническая поддержка</div>
+                    <div className="text-sm opacity-75">Ответим в течение часа</div>
                   </div>
                 </div>
                 <div className="flex items-center">
                   <Icon name="MapPin" className="h-6 w-6 mr-4 text-primary" />
                   <div>
-                    <div className="font-semibold">г. Москва, ул. Технологическая, 15</div>
-                    <div className="text-sm opacity-75">Офис и склад</div>
+                    <div className="font-semibold">г. Москва, ул. Профсоюзная, 78</div>
+                    <div className="text-sm opacity-75">Офис открыт с 9:00 до 18:00</div>
                   </div>
                 </div>
               </div>
@@ -297,28 +324,28 @@ const Index = () => {
                     Оставьте заявку, и мы подготовим техническое предложение
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4">
+                <CardContent className="px-0 pb-0">
+                  <form className="space-y-4">
                     <div>
-                      <label className="text-sm font-medium">Имя</label>
-                      <input className="w-full mt-1 px-3 py-2 border rounded-md" placeholder="Ваше имя" />
+                      <Input placeholder="Ваше имя" />
                     </div>
                     <div>
-                      <label className="text-sm font-medium">Телефон</label>
-                      <input className="w-full mt-1 px-3 py-2 border rounded-md" placeholder="+7 (___) ___-__-__" />
+                      <Input placeholder="Телефон" type="tel" />
                     </div>
-                  </div>
-                  <div>
-                    <label className="text-sm font-medium">Объект</label>
-                    <input className="w-full mt-1 px-3 py-2 border rounded-md" placeholder="Тип объекта или адрес" />
-                  </div>
-                  <div>
-                    <label className="text-sm font-medium">Описание задач</label>
-                    <textarea className="w-full mt-1 px-3 py-2 border rounded-md h-20" placeholder="Какие системы безопасности нужны?"></textarea>
-                  </div>
-                  <Button className="w-full" size="lg">
-                    Получить консультацию
-                  </Button>
+                    <div>
+                      <Input placeholder="Email" type="email" />
+                    </div>
+                    <div>
+                      <Textarea placeholder="Опишите ваш объект и требования к системе безопасности" rows={4} />
+                    </div>
+                    <Button className="w-full" size="lg">
+                      <Icon name="Send" className="mr-2 h-5 w-5" />
+                      Отправить заявку
+                    </Button>
+                    <p className="text-xs text-gray-500 text-center">
+                      Нажимая кнопку, вы соглашаетесь с обработкой персональных данных
+                    </p>
+                  </form>
                 </CardContent>
               </Card>
             </div>
