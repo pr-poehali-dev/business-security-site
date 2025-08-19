@@ -4,6 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import Icon from '@/components/ui/icon';
+import { Link } from 'react-router-dom';
 
 const Index = () => {
   const services = [
@@ -92,12 +93,11 @@ const Index = () => {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
               <Icon name="Shield" className="h-8 w-8 text-primary" />
-              <span className="text-xl font-bold text-secondary">ЭнергоАльянс-Крым
-</span>
+              <span className="text-xl font-bold text-secondary">SecurityTech</span>
             </div>
             <nav className="hidden md:flex space-x-8">
-              <a href="#services" className="text-slate-600 hover:text-primary transition-colors">Услуги</a>
-              <a href="#projects" className="text-slate-600 hover:text-primary transition-colors">Проекты</a>
+              <Link to="/services" className="text-slate-600 hover:text-primary transition-colors">Услуги</Link>
+              <Link to="/projects" className="text-slate-600 hover:text-primary transition-colors">Проекты</Link>
               <a href="#about" className="text-slate-600 hover:text-primary transition-colors">О компании</a>
               <a href="#certificates" className="text-slate-600 hover:text-primary transition-colors">Сертификаты</a>
               <a href="#contact" className="text-slate-600 hover:text-primary transition-colors">Контакты</a>
