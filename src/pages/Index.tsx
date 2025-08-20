@@ -415,8 +415,17 @@ const Index = () => {
             </div>
           </div>
           
-          <div className="border-t border-slate-800 mt-8 pt-8 text-center text-sm text-slate-400">
-            © 2024 ЭнергоАльянс-Крым. Все права защищены.
+          <div className="border-t border-slate-800 mt-8 pt-8 text-center text-sm text-slate-400 space-y-2">
+            <div>© 2024 ООО «ЭнергоАльянс-Крым». Все права защищены.</div>
+            <div className="text-xs">
+              Изображения получены из открытых источников и используются в демонстрационных целях.
+              <br />
+              При коммерческом использовании требуется замена на лицензионные изображения.
+            </div>
+            <div className="text-xs space-x-4">
+              <a href="/legal" className="hover:text-white transition-colors">Правовая информация</a>
+              <a href="/privacy" className="hover:text-white transition-colors">Политика конфиденциальности</a>
+            </div>
           </div>
         </div>
       </footer>
