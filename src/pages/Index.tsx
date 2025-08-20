@@ -9,40 +9,46 @@ import Navigation from '@/components/Navigation';
 const Index = () => {
   const services = [
     {
-      title: "Автоматические пожарные системы (АПС)",
-      description: "Проектирование и монтаж систем пожарной сигнализации",
-      icon: "Flame",
-      features: ["Датчики дыма и тепла", "Оповещение о пожаре", "Автоматическое пожаротушение"]
+      title: "Солнечные электростанции",
+      description: "Проектирование и монтаж солнечных панелей",
+      icon: "Sun",
+      image: "/img/dee0c0fd-ef5e-49b5-9500-5b8b0706fb01.jpg",
+      features: ["Солнечные панели", "Инверторы", "Системы крепления"]
     },
     {
-      title: "Системы видеонаблюдения",
-      description: "Современные решения для безопасности объектов",
-      icon: "Camera",
-      features: ["HD/4K камеры", "Удаленный доступ", "Интеллектуальная аналитика"]
+      title: "Электротехническое проектирование",
+      description: "Разработка проектной документации",
+      icon: "FileText",
+      image: "/img/690dd835-afef-4567-80a7-a18bfa2eabe5.jpg",
+      features: ["Схемы электроснабжения", "Расчеты нагрузок", "Техническая документация"]
     },
     {
-      title: "Системы контроля доступа (СКУД)",
-      description: "Контроль и управление доступом персонала",
-      icon: "Lock",
-      features: ["Карточные замки", "Биометрия", "Временные зоны"]
+      title: "Промышленная автоматизация",
+      description: "Системы управления и контроля",
+      icon: "Settings",
+      image: "/img/ba8acdc6-6289-4879-ac92-6873b1db705b.jpg",
+      features: ["АСУТП", "Диспетчеризация", "Автоматическое управление"]
     },
     {
-      title: "Охранная сигнализация",
-      description: "Защита от несанкционированного проникновения",
-      icon: "Shield",
-      features: ["Датчики движения", "Тревожная кнопка", "Связь с ЧОП"]
+      title: "Электромонтажные работы",
+      description: "Профессиональный монтаж электрооборудования",
+      icon: "Zap",
+      image: "/img/463ab5d4-6201-462a-aa9f-a2d52d103122.jpg",
+      features: ["Силовые кабели", "Электрощитовое оборудование", "Заземление"]
     },
     {
-      title: "Системы оповещения",
-      description: "Речевое и звуковое оповещение персонала",
-      icon: "Speaker",
-      features: ["Трансляция объявлений", "Зональное управление", "Аварийное оповещение"]
+      title: "Энергоаудит и консалтинг",
+      description: "Оптимизация энергопотребления",
+      icon: "TrendingUp",
+      image: "/img/40dc4d51-e213-4707-bcc4-fe5071228f33.jpg",
+      features: ["Анализ энергопотребления", "Рекомендации по экономии", "Техническая экспертиза"]
     },
     {
-      title: "Интеграция систем",
-      description: "Объединение всех систем безопасности",
-      icon: "Network",
-      features: ["Единая платформа", "Централизованное управление", "Автоматические сценарии"]
+      title: "Обслуживание и ремонт",
+      description: "Техническое обслуживание оборудования",
+      icon: "Wrench",
+      image: "/img/690dd835-afef-4567-80a7-a18bfa2eabe5.jpg",
+      features: ["Плановое ТО", "Аварийный ремонт", "Модернизация"]
     }
   ];
 
@@ -90,37 +96,51 @@ const Index = () => {
       <Navigation />
 
       {/* Hero секция */}
-      <section className="relative py-20 px-4">
-        <div className="container mx-auto text-center">
+      <section className="relative min-h-screen py-32 px-4 overflow-hidden">
+        {/* Главное изображение */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/img/29078f5b-88b4-48d3-a6be-d0859550505d.jpg" 
+            alt="Энергетическая инфраструктура" 
+            className="w-full h-full object-cover opacity-30 animate-fade-in"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-900/90 via-blue-900/80 to-slate-900/90"></div>
+        </div>
+        
+        <div className="container mx-auto text-center relative z-10">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-5xl md:text-6xl font-bold text-secondary mb-6 leading-tight">
-              Профессиональные решения
+            <Badge className="mb-6 bg-blue-600 hover:bg-blue-700 animate-slide-up text-white">Профессиональные решения</Badge>
+            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight animate-slide-up">
+              Энергетические 
               <br />
-              <span className="text-primary">в области безопасности</span>
+              <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">решения</span>
             </h1>
-            <p className="text-xl text-slate-600 mb-8 max-w-3xl mx-auto">
-              Проектирование, монтаж и обслуживание систем АПС, видеонаблюдения и контроля доступа. 
-              Полный цикл работ с демонстрацией технической документации.
+            <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto animate-fade-in">
+              Проектируем, монтируем и обслуживаем энергетические системы любой сложности. 
+              Более 10 лет опыта работы с коммерческими и промышленными объектами.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="px-8">
-                <Icon name="FileText" className="mr-2 h-5 w-5" />
-                Техническое задание
-              </Button>
-              <Button variant="outline" size="lg" className="px-8">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up">
+              <Button size="lg" className="px-8 bg-blue-600 hover:bg-blue-700 hover-scale">
                 <Icon name="Phone" className="mr-2 h-5 w-5" />
-                +7 (495) 123-45-67
+                Получить консультацию
+              </Button>
+              <Button variant="outline" size="lg" className="px-8 border-gray-600 text-white hover:bg-gray-800 hover-scale">
+                <Icon name="FileText" className="mr-2 h-5 w-5" />
+                Наши проекты
               </Button>
             </div>
           </div>
         </div>
         
-        {/* Декоративные элементы */}
-        <div className="absolute top-20 left-10 opacity-10">
-          <Icon name="Camera" className="h-16 w-16 text-primary" />
+        {/* Фоновые элементы */}
+        <div className="absolute inset-0 z-5">
+          <div className="absolute top-10 left-10 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-10 right-10 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
         </div>
-        <div className="absolute top-40 right-16 opacity-10">
-          <Icon name="Shield" className="h-12 w-12 text-primary" />
+        
+        {/* Стрелка вниз */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
+          <Icon name="ChevronDown" className="h-8 w-8 text-gray-400" />
         </div>
       </section>
 
@@ -136,11 +156,19 @@ const Index = () => {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <Card key={index} className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group">
-                <CardHeader className="text-center pb-4">
-                  <div className="mx-auto w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                    <Icon name={service.icon} className="h-8 w-8 text-primary" />
+              <Card key={index} className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group animate-slide-up hover-scale" style={{animationDelay: `${index * 0.1}s`}}>
+                <div className="relative overflow-hidden rounded-t-lg">
+                  <img 
+                    src={service.image} 
+                    alt={service.title}
+                    className="w-full h-48 object-cover image-glow transition-transform duration-300 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+                  <div className="absolute top-4 left-4 p-2 rounded-lg bg-blue-600/80 backdrop-blur animate-float">
+                    <Icon name={service.icon} className="h-6 w-6 text-white" />
                   </div>
+                </div>
+                <CardHeader className="text-center pb-4">
                   <CardTitle className="text-xl">{service.title}</CardTitle>
                   <CardDescription>{service.description}</CardDescription>
                 </CardHeader>
@@ -148,7 +176,7 @@ const Index = () => {
                   <div className="space-y-2">
                     {service.features.map((feature, idx) => (
                       <div key={idx} className="flex items-center text-sm text-slate-600">
-                        <Icon name="Check" className="h-4 w-4 text-primary mr-2 flex-shrink-0" />
+                        <Icon name="Check" className="h-4 w-4 text-primary mr-2 flex-shrink-0 animate-pulse-slow" />
                         {feature}
                       </div>
                     ))}
