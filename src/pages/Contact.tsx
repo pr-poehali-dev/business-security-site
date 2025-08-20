@@ -11,24 +11,24 @@ const Contact = () => {
   const contactInfo = [
     {
       title: "Главный офис",
-      address: "г. Москва, ул. Профсоюзная, 78, офис 405",
-      phone: "+7 (495) 123-45-67",
+      address: "г. Симферополь, ул. Энергетическая, 15",
+      phone: "+7 (978) 713-39-59",
       email: "info@energoalliance-crimea.ru",
-      hours: "Пн-Пт: 9:00-18:00, Сб: 10:00-16:00",
+      hours: "Пн-Пт: 8:00-18:00, Сб: 9:00-15:00",
       icon: "MapPin"
     },
     {
       title: "Отдел продаж",
-      address: "г. Москва, ул. Профсоюзная, 78, офис 410",
-      phone: "+7 (495) 123-45-68",
+      address: "г. Симферополь, ул. Энергетическая, 15",
+      phone: "+7 (978) 910-77-10",
       email: "sales@energoalliance-crimea.ru",
-      hours: "Пн-Пт: 9:00-19:00, Сб: 10:00-17:00",
+      hours: "Пн-Пт: 8:00-19:00, Сб: 9:00-16:00",
       icon: "Phone"
     },
     {
       title: "Техническая поддержка",
-      address: "Круглосуточно",
-      phone: "+7 (495) 123-45-69",
+      address: "Круглосуточно по всему Крыму",
+      phone: "+7 (978) 713-39-59",
       email: "support@energoalliance-crimea.ru", 
       hours: "24/7 без выходных",
       icon: "Headphones"
@@ -37,88 +37,109 @@ const Contact = () => {
 
   const services = [
     {
-      title: "Консультация инженера",
-      description: "Бесплатный выезд специалиста на объект",
+      title: "Энергоаудит объекта",
+      description: "Бесплатная оценка энергопотребления",
       duration: "1-2 дня",
-      icon: "User"
+      icon: "TrendingUp"
     },
     {
       title: "Техническое предложение",
-      description: "Разработка технического решения и сметы",
+      description: "Расчет солнечной электростанции",
       duration: "3-5 дней",
       icon: "FileText"
     },
     {
-      title: "Проектирование",
+      title: "Проектирование СЭС",
       description: "Создание проектной документации",
-      duration: "10-20 дней",
-      icon: "Drafting"
+      duration: "7-14 дней",
+      icon: "Sun"
     },
     {
       title: "Аварийный выезд",
-      description: "Устранение неисправностей систем безопасности",
-      duration: "В течение 2 часов",
+      description: "Устранение неисправностей оборудования",
+      duration: "В течение 4 часов",
       icon: "Zap"
     }
   ];
 
   const regions = [
-    "Москва и Московская область",
-    "Санкт-Петербург и Ленинградская область", 
-    "Республика Татарстан",
-    "Нижегородская область",
-    "Свердловская область",
-    "Краснодарский край",
-    "Ростовская область",
-    "Самарская область"
+    "г. Симферополь",
+    "г. Севастополь", 
+    "г. Керчь",
+    "г. Евпатория",
+    "г. Феодосия",
+    "г. Ялта",
+    "г. Бахчисарай",
+    "Весь Крымский полуостров"
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-      {/* Header */}
-      <header className="bg-white/80 backdrop-blur-md border-b sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <Link to="/" className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                <Icon name="Shield" className="h-6 w-6 text-white" />
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+      <Navigation />
+
+      {/* Hero секция */}
+      <section className="relative min-h-screen py-32 px-4 overflow-hidden">
+        {/* Главное изображение */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/img/40dc4d51-e213-4707-bcc4-fe5071228f33.jpg" 
+            alt="Консультация и контакты" 
+            className="w-full h-full object-cover opacity-20 animate-fade-in"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-900/90 via-blue-900/80 to-slate-900/90"></div>
+        </div>
+        
+        <div className="container mx-auto text-center relative z-10">
+          <div className="max-w-4xl mx-auto">
+            <Badge className="mb-6 bg-blue-600 hover:bg-blue-700 animate-slide-up text-white">Свяжитесь с нами</Badge>
+            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight animate-slide-up">
+              Контакты
+              <br />
+              <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">ЭнергоАльянс-Крым</span>
+            </h1>
+            <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto animate-fade-in">
+              Получите бесплатную консультацию по энергетическим решениям. 
+              Наши специалисты ответят на все вопросы и подберут оптимальное решение.
+            </p>
+            
+            {/* Быстрые контакты */}
+            <div className="grid md:grid-cols-2 gap-6 mt-12 animate-slide-up">
+              <div className="bg-white/10 backdrop-blur rounded-lg p-6 hover-scale">
+                <Icon name="Phone" className="h-8 w-8 text-blue-400 mx-auto mb-3 animate-pulse-slow" />
+                <p className="text-gray-300 text-sm mb-2">Звоните прямо сейчас</p>
+                <p className="text-xl font-bold text-white">+7 (978) 713-39-59</p>
               </div>
-              <div>
-                <h1 className="text-xl font-bold text-gray-900">ЭнергоАльянс-Крым</h1>
-                <p className="text-sm text-gray-600">Системы безопасности</p>
+              <div className="bg-white/10 backdrop-blur rounded-lg p-6 hover-scale">
+                <Icon name="Mail" className="h-8 w-8 text-blue-400 mx-auto mb-3 animate-pulse-slow" />
+                <p className="text-gray-300 text-sm mb-2">Напишите нам</p>
+                <p className="text-xl font-bold text-white">info@energoalliance-crimea.ru</p>
               </div>
-            </Link>
-            <nav className="hidden md:flex space-x-8">
-              <Link to="/services" className="text-gray-700 hover:text-primary transition-colors">Услуги</Link>
-              <Link to="/projects" className="text-gray-700 hover:text-primary transition-colors">Проекты</Link>
-              <Link to="/about" className="text-gray-700 hover:text-primary transition-colors">О нас</Link>
-              <Link to="/contact" className="text-primary font-medium">Контакты</Link>
-            </nav>
-            <Button>Получить консультацию</Button>
+            </div>
           </div>
         </div>
-      </header>
-
-      {/* Hero Section */}
-      <section className="py-16 px-4">
-        <div className="container mx-auto text-center">
-          <h1 className="text-5xl font-bold text-gray-900 mb-6">
-            <span className="text-primary">Контакты</span>
-          </h1>
-          <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            Свяжитесь с нами удобным способом для получения консультации или технической поддержки
-          </p>
+        
+        {/* Фоновые элементы */}
+        <div className="absolute inset-0 z-5">
+          <div className="absolute top-20 left-20 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-20 right-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
         </div>
       </section>
 
-      {/* Contact Info */}
-      <section className="py-16 px-4 bg-white">
+      {/* Контактная информация */}
+      <section className="py-20 px-4 bg-white">
         <div className="container mx-auto">
+          <div className="text-center mb-16 animate-slide-up">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Наши офисы</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Выберите удобный способ связи или приезжайте к нам в офис
+            </p>
+          </div>
+          
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             {contactInfo.map((info, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow">
+              <Card key={index} className="hover:shadow-lg transition-all duration-300 animate-slide-up hover-scale" style={{animationDelay: `${index * 0.1}s`}}>
                 <CardHeader className="text-center">
-                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 animate-float">
                     <Icon name={info.icon} className="h-8 w-8 text-primary" />
                   </div>
                   <CardTitle className="text-xl">{info.title}</CardTitle>
@@ -147,12 +168,12 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Contact Forms */}
-      <section className="py-16 px-4">
+      {/* Формы обратной связи */}
+      <section className="py-20 px-4 bg-slate-50">
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-12">
-            {/* Main Contact Form */}
-            <Card className="p-8">
+            {/* Основная форма */}
+            <Card className="p-8 animate-slide-up hover-scale">
               <CardHeader className="px-0 pt-0">
                 <CardTitle className="text-2xl">Получить консультацию</CardTitle>
                 <CardDescription>
@@ -185,28 +206,28 @@ const Contact = () => {
 
                   <div>
                     <label className="text-sm font-medium mb-1 block">Тип объекта</label>
-                    <Input placeholder="Офис, склад, производство..." />
+                    <Input placeholder="Частный дом, предприятие, торговый центр..." />
                   </div>
 
                   <div>
-                    <label className="text-sm font-medium mb-1 block">Площадь объекта (м²)</label>
-                    <Input placeholder="1000" type="number" />
+                    <label className="text-sm font-medium mb-1 block">Потребляемая мощность (кВт)</label>
+                    <Input placeholder="50" type="number" />
                   </div>
 
                   <div>
                     <label className="text-sm font-medium mb-1 block">Описание задач *</label>
                     <Textarea 
-                      placeholder="Опишите какие системы безопасности нужны: АПС, видеонаблюдение, СКУД и т.д."
+                      placeholder="Опишите ваши потребности: солнечные панели, энергоаудит, автоматизация и т.д."
                       rows={4} 
                     />
                   </div>
 
                   <div>
                     <label className="text-sm font-medium mb-1 block">Желаемый бюджет</label>
-                    <Input placeholder="от 500 000 рублей" />
+                    <Input placeholder="от 1 000 000 рублей" />
                   </div>
 
-                  <Button className="w-full" size="lg">
+                  <Button className="w-full hover-scale" size="lg">
                     <Icon name="Send" className="mr-2 h-5 w-5" />
                     Отправить заявку
                   </Button>
@@ -218,9 +239,9 @@ const Contact = () => {
               </CardContent>
             </Card>
 
-            {/* Quick Service Requests */}
+            {/* Экспресс-заявки */}
             <div className="space-y-6">
-              <Card className="p-6">
+              <Card className="p-6 animate-slide-up hover-scale" style={{animationDelay: '0.1s'}}>
                 <CardHeader className="px-0 pt-0">
                   <CardTitle className="text-xl">Экспресс-заявки</CardTitle>
                   <CardDescription>
@@ -231,7 +252,7 @@ const Contact = () => {
                   <div className="grid gap-4">
                     {services.map((service, index) => (
                       <div key={index} className="flex items-start space-x-4 p-4 border rounded-lg hover:bg-gray-50 transition-colors">
-                        <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 animate-float">
                           <Icon name={service.icon} className="h-5 w-5 text-primary" />
                         </div>
                         <div className="flex-1">
@@ -241,7 +262,7 @@ const Contact = () => {
                             {service.duration}
                           </Badge>
                         </div>
-                        <Button size="sm" variant="outline">
+                        <Button size="sm" variant="outline" className="hover-scale">
                           Заказать
                         </Button>
                       </div>
@@ -250,25 +271,28 @@ const Contact = () => {
                 </CardContent>
               </Card>
 
-              {/* Emergency Contact */}
-              <Card className="p-6 bg-red-50 border-red-200">
+              {/* Аварийная служба */}
+              <Card className="p-6 bg-red-50 border-red-200 animate-slide-up hover-scale" style={{animationDelay: '0.2s'}}>
                 <CardHeader className="px-0 pt-0">
-                  <CardTitle className="text-xl text-red-800">Аварийная служба</CardTitle>
+                  <CardTitle className="text-xl text-red-800 flex items-center">
+                    <Icon name="AlertTriangle" className="h-6 w-6 mr-2 animate-pulse" />
+                    Аварийная служба
+                  </CardTitle>
                   <CardDescription className="text-red-600">
-                    Круглосуточная техническая поддержка
+                    Круглосуточная техническая поддержка по всему Крыму
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="px-0 pb-0">
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
                       <span className="font-medium text-red-800">Телефон:</span>
-                      <span className="text-lg font-bold text-red-600">+7 (495) 123-45-69</span>
+                      <span className="text-lg font-bold text-red-600">+7 (978) 713-39-59</span>
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="font-medium text-red-800">Время реагирования:</span>
-                      <span className="text-red-600">до 2 часов</span>
+                      <span className="text-red-600">до 4 часов</span>
                     </div>
-                    <Button className="w-full bg-red-600 hover:bg-red-700">
+                    <Button className="w-full bg-red-600 hover:bg-red-700 hover-scale">
                       <Icon name="Phone" className="mr-2 h-4 w-4" />
                       Вызвать аварийную службу
                     </Button>
@@ -280,62 +304,64 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Map & Regions */}
-      <section className="py-16 px-4 bg-white">
+      {/* География работы */}
+      <section className="py-20 px-4 bg-white">
         <div className="container mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Map placeholder */}
-            <div>
-              <h3 className="text-2xl font-semibold mb-6">Как нас найти</h3>
-              <div className="aspect-video bg-gray-200 rounded-lg flex items-center justify-center mb-6">
-                <div className="text-center">
-                  <Icon name="MapPin" className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-                  <p className="text-gray-600">Интерактивная карта</p>
-                  <p className="text-sm text-gray-500">г. Москва, ул. Профсоюзная, 78</p>
-                </div>
-              </div>
-              
-              <div className="space-y-4">
-                <div className="flex items-start space-x-3">
-                  <Icon name="Car" className="h-5 w-5 text-primary mt-1" />
-                  <div>
-                    <h4 className="font-medium">На автомобиле</h4>
-                    <p className="text-sm text-gray-600">Парковка во дворе здания. Въезд с ул. Профсоюзная</p>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Изображение */}
+            <div className="animate-fade-in">
+              <img 
+                src="/img/463ab5d4-6201-462a-aa9f-a2d52d103122.jpg" 
+                alt="Электромонтажные работы в Крыму"
+                className="w-full h-80 object-cover rounded-lg image-glow hover-scale"
+              />
+              <div className="mt-6 p-6 bg-blue-50 rounded-lg">
+                <h4 className="font-semibold mb-2 flex items-center">
+                  <Icon name="MapPin" className="h-5 w-5 mr-2 text-primary animate-pulse-slow" />
+                  Как нас найти
+                </h4>
+                <p className="text-sm text-gray-600 mb-4">
+                  г. Симферополь, ул. Энергетическая, 15, офис 204
+                </p>
+                <div className="space-y-3 text-sm">
+                  <div className="flex items-start space-x-3">
+                    <Icon name="Car" className="h-4 w-4 text-primary mt-0.5" />
+                    <span className="text-gray-600">Парковка рядом с офисом</span>
                   </div>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <Icon name="Train" className="h-5 w-5 text-primary mt-1" />
-                  <div>
-                    <h4 className="font-medium">На общественном транспорте</h4>
-                    <p className="text-sm text-gray-600">Метро 'Новые Черемушки', далее 5 минут пешком</p>
+                  <div className="flex items-start space-x-3">
+                    <Icon name="Bus" className="h-4 w-4 text-primary mt-0.5" />
+                    <span className="text-gray-600">Автобус № 12, 15 до остановки "Энергетическая"</span>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Regions */}
-            <div>
+            {/* География */}
+            <div className="animate-slide-up">
               <h3 className="text-2xl font-semibold mb-6">География работы</h3>
               <p className="text-gray-600 mb-6">
-                Мы выполняем проекты в следующих регионах России:
+                Мы выполняем проекты по всему Крымскому полуострову:
               </p>
               <div className="grid gap-3">
                 {regions.map((region, index) => (
-                  <div key={index} className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
-                    <Icon name="MapPin" className="h-4 w-4 text-primary" />
+                  <div key={index} className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg hover-scale">
+                    <Icon name="MapPin" className="h-4 w-4 text-primary animate-pulse-slow" />
                     <span className="text-sm">{region}</span>
                   </div>
                 ))}
               </div>
               
-              <div className="mt-8 p-6 bg-blue-50 rounded-lg">
-                <h4 className="font-semibold mb-2">Работаем в других регионах?</h4>
+              <div className="mt-8 p-6 bg-blue-50 rounded-lg hover-scale">
+                <h4 className="font-semibold mb-2 flex items-center">
+                  <Icon name="Zap" className="h-5 w-5 mr-2 text-primary animate-pulse-slow" />
+                  Выездные работы
+                </h4>
                 <p className="text-sm text-gray-600 mb-4">
-                  Готовы рассмотреть проекты в других регионах России. 
-                  Свяжитесь с нами для обсуждения условий.
+                  Готовы выехать в любую точку Крыма для оценки объекта и выполнения работ. 
+                  Транспортные расходы обсуждаются индивидуально.
                 </p>
-                <Button variant="outline" size="sm">
-                  Обсудить проект
+                <Button variant="outline" size="sm" className="hover-scale">
+                  Заказать выезд
                 </Button>
               </div>
             </div>
@@ -344,18 +370,25 @@ const Contact = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 bg-secondary text-white">
-        <div className="container mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-6">Есть вопросы?</h2>
-          <p className="text-lg mb-8 opacity-90 max-w-2xl mx-auto">
-            Наши специалисты ответят на любые вопросы по системам безопасности
+      <section className="py-20 px-4 bg-gradient-to-r from-blue-900 to-purple-900 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <img 
+            src="/img/dee0c0fd-ef5e-49b5-9500-5b8b0706fb01.jpg" 
+            alt="Солнечные панели" 
+            className="w-full h-full object-cover animate-pulse-slow"
+          />
+        </div>
+        <div className="container mx-auto text-center relative z-10 animate-slide-up">
+          <h2 className="text-4xl font-bold mb-6 text-white">Готовы начать проект?</h2>
+          <p className="text-lg mb-8 text-gray-300 max-w-2xl mx-auto">
+            Свяжитесь с нами прямо сейчас и получите бесплатную консультацию по энергетическим решениям
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="outline" className="px-8 py-3 bg-white text-secondary hover:bg-gray-100">
+            <Button size="lg" variant="outline" className="px-8 py-3 bg-white text-gray-900 hover:bg-gray-100 hover-scale">
               <Icon name="MessageCircle" className="mr-2 h-5 w-5" />
               Онлайн-чат
             </Button>
-            <Button size="lg" className="px-8 py-3 bg-primary hover:bg-primary/90">
+            <Button size="lg" className="px-8 py-3 bg-blue-600 hover:bg-blue-700 hover-scale">
               <Icon name="Calendar" className="mr-2 h-5 w-5" />
               Записаться на встречу
             </Button>

@@ -8,67 +8,67 @@ import { Link } from 'react-router-dom';
 const About = () => {
   const team = [
     {
-      name: "Александр Петров",
-      position: "Технический директор",
+      name: "Владимир Кузьмин",
+      position: "Генеральный директор",
       experience: "15 лет",
-      specialization: "Проектирование АПС",
-      achievements: ["Сертификат МЧС", "Эксперт по пожарной безопасности", "200+ проектов"]
+      specialization: "Энергетические системы",
+      achievements: ["MBA в энергетике", "Эксперт по возобновляемым источникам", "300+ проектов"]
     },
     {
-      name: "Елена Сидорова", 
-      position: "Ведущий инженер",
+      name: "Елена Петрова", 
+      position: "Технический директор",
       experience: "12 лет",
-      specialization: "Системы видеонаблюдения",
-      achievements: ["Партнер Hikvision", "Специалист по IP-технологиям", "150+ объектов"]
+      specialization: "Солнечная энергетика",
+      achievements: ["Партнер Suntech", "Специалист по фотовольтаике", "200+ установок"]
     },
     {
-      name: "Михаил Иванов",
-      position: "Инженер СКУД",
-      experience: "8 лет", 
-      specialization: "Контроль доступа",
-      achievements: ["Сертификат ZKTeco", "Биометрические системы", "100+ установок"]
+      name: "Александр Сидоров",
+      position: "Главный инженер",
+      experience: "10 лет", 
+      specialization: "Электротехническое проектирование",
+      achievements: ["Сертификат ПУЭ", "Промышленная автоматизация", "150+ проектов"]
     },
     {
-      name: "Ольга Козлова",
+      name: "Ольга Иванова",
       position: "Проект-менеджер",
-      experience: "10 лет",
-      specialization: "Управление проектами",
-      achievements: ["PMP сертификат", "Agile методология", "300+ проектов"]
+      experience: "8 лет",
+      specialization: "Управление энергопроектами",
+      achievements: ["PMP сертификат", "Agile методология", "100+ проектов"]
     }
   ];
 
   const certificates = [
     {
-      title: "Лицензия МЧС России",
-      number: "№ 3/02570 от 15.04.2023",
-      description: "Деятельность по монтажу, техническому обслуживанию и ремонту средств обеспечения пожарной безопасности зданий и сооружений",
-      icon: "Shield"
+      title: "Лицензия Ростехнадзора",
+      number: "№ ЭТ-15-025467 от 20.03.2023",
+      description: "Деятельность по проектированию, монтажу и эксплуатации энергетических установок",
+      icon: "Zap"
     },
     {
-      title: "ISO 9001:2015",
-      number: "Сертификат № RU22/3456",
-      description: "Система менеджмента качества в области проектирования, монтажа и обслуживания систем безопасности",
-      icon: "Award"
+      title: "ISO 14001:2015",
+      number: "Сертификат № RU22/5678",
+      description: "Система экологического менеджмента в области возобновляемой энергетики",
+      icon: "Leaf"
     },
     {
       title: "Допуск СРО",
-      number: "№ 177-2023-5570180370",
-      description: "Проектирование зданий и сооружений I и II уровней ответственности в области пожарной безопасности",
+      number: "№ 244-2023-7740180480",
+      description: "Проектирование энергетических объектов I и II категорий сложности",
       icon: "FileText"
     },
     {
       title: "Партнерские сертификаты",
-      number: "Hikvision, Dahua, Bolid, Ajax",
-      description: "Официальные партнерские соглашения с ведущими производителями оборудования систем безопасности",
+      number: "JinkoSolar, Huawei, ABB, Schneider",
+      description: "Официальные партнерские соглашения с ведущими производителями энергооборудования",
       icon: "Handshake"
     }
   ];
 
   const advantages = [
     {
-      title: "Собственное производство",
-      description: "Производим щиты управления и специализированные решения под конкретные задачи",
-      icon: "Factory"
+      title: "Собственный проектный отдел",
+      description: "Штатные проектировщики с допусками и многолетним опытом",
+      icon: "Drafting"
     },
     {
       title: "Склад оборудования",
@@ -82,7 +82,7 @@ const About = () => {
     },
     {
       title: "Гарантийное обслуживание",
-      description: "Предоставляем расширенную гарантию на все виды выполненных работ",
+      description: "Предоставляем расширенную гарантию до 25 лет на солнечные панели",
       icon: "CheckCircle"
     },
     {
@@ -91,123 +91,113 @@ const About = () => {
       icon: "GraduationCap"
     },
     {
-      title: "Проектный отдел",
-      description: "Штатные проектировщики с допусками и лицензиями",
-      icon: "Drafting"
+      title: "Энергоаудит",
+      description: "Комплексная оценка энергоэффективности объектов",
+      icon: "TrendingUp"
     }
   ];
 
   const milestones = [
-    { year: "2009", event: "Основание компании", description: "Начало деятельности в области систем безопасности" },
-    { year: "2012", event: "Получение лицензии МЧС", description: "Право на работы по пожарной безопасности" },
-    { year: "2015", event: "Партнерство с Hikvision", description: "Статус золотого партнера" },
-    { year: "2018", event: "Сертификация ISO 9001", description: "Внедрение системы менеджмента качества" },
-    { year: "2020", event: "Расширение географии", description: "Работа в 15 регионах России" },
-    { year: "2023", event: "200-й проект", description: "Реализация юбилейного проекта" }
+    { year: "2010", event: "Основание компании", description: "Начало деятельности в области энергетики" },
+    { year: "2013", event: "Первая солнечная электростанция", description: "Реализация пилотного проекта 100 кВт" },
+    { year: "2016", event: "Партнерство с JinkoSolar", description: "Статус авторизованного дистрибьютора" },
+    { year: "2019", event: "Сертификация ISO 14001", description: "Внедрение экологического менеджмента" },
+    { year: "2021", event: "Расширение в Крыму", description: "Открытие регионального представительства" },
+    { year: "2024", event: "300+ проектов", description: "Достижение нового рубежа" }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-      {/* Header */}
-      <header className="bg-white/80 backdrop-blur-md border-b sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <Link to="/" className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                <Icon name="Shield" className="h-6 w-6 text-white" />
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+      <Navigation />
+
+      {/* Hero секция */}
+      <section className="relative min-h-screen py-32 px-4 overflow-hidden">
+        {/* Главное изображение */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/img/29078f5b-88b4-48d3-a6be-d0859550505d.jpg" 
+            alt="Энергетическая инфраструктура" 
+            className="w-full h-full object-cover opacity-20 animate-fade-in"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-900/90 via-blue-900/80 to-slate-900/90"></div>
+        </div>
+        
+        <div className="container mx-auto text-center relative z-10">
+          <div className="max-w-4xl mx-auto">
+            <Badge className="mb-6 bg-blue-600 hover:bg-blue-700 animate-slide-up text-white">О компании</Badge>
+            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight animate-slide-up">
+              ЭнергоАльянс-Крым
+              <br />
+              <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Надёжный партнёр</span>
+            </h1>
+            <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto animate-fade-in">
+              Более 15 лет создаем эффективные энергетические решения для бизнеса и промышленности. 
+              Полный цикл от проектирования до обслуживания.
+            </p>
+            
+            {/* Статистика */}
+            <div className="grid md:grid-cols-3 gap-8 mt-12 animate-slide-up">
+              <div className="text-center hover-scale">
+                <div className="text-4xl font-bold text-blue-300 mb-2 animate-pulse-slow">300+</div>
+                <div className="text-lg text-gray-300">Реализованных проектов</div>
               </div>
-              <div>
-                <h1 className="text-xl font-bold text-gray-900">ЭнергоАльянс-Крым</h1>
-                <p className="text-sm text-gray-600">Системы безопасности</p>
+              <div className="text-center hover-scale">
+                <div className="text-4xl font-bold text-blue-300 mb-2 animate-pulse-slow">15</div>
+                <div className="text-lg text-gray-300">Лет на рынке</div>
               </div>
-            </Link>
-            <nav className="hidden md:flex space-x-8">
-              <Link to="/services" className="text-gray-700 hover:text-primary transition-colors">Услуги</Link>
-              <Link to="/projects" className="text-gray-700 hover:text-primary transition-colors">Проекты</Link>
-              <Link to="/about" className="text-primary font-medium">О нас</Link>
-              <Link to="/contact" className="text-gray-700 hover:text-primary transition-colors">Контакты</Link>
-            </nav>
-            <Button>Получить консультацию</Button>
+              <div className="text-center hover-scale">
+                <div className="text-4xl font-bold text-blue-300 mb-2 animate-pulse-slow">24/7</div>
+                <div className="text-lg text-gray-300">Техподдержка</div>
+              </div>
+            </div>
           </div>
         </div>
-      </header>
-
-      {/* Hero Section */}
-      <section className="py-16 px-4">
-        <div className="container mx-auto text-center">
-          <h1 className="text-5xl font-bold text-gray-900 mb-6">
-            О <span className="text-primary">компании</span>
-          </h1>
-          <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            Более 15 лет создаем надежные системы безопасности для объектов любой сложности
-          </p>
+        
+        {/* Фоновые элементы */}
+        <div className="absolute inset-0 z-5">
+          <div className="absolute top-20 left-20 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-20 right-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
         </div>
       </section>
 
-      {/* Company Info */}
-      <section className="py-16 px-4 bg-white">
+      {/* О компании */}
+      <section className="py-20 px-4 bg-white">
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">ЭнергоАльянс-Крым</h2>
+            <div className="animate-slide-up">
+              <h2 className="text-4xl font-bold text-gray-900 mb-6">Наша история</h2>
               <div className="space-y-4 text-gray-600 text-lg">
                 <p>
-                  Компания ЭнергоАльянс-Крым была основана в 2009 году группой инженеров с многолетним опытом 
-                  работы в области систем безопасности. За годы работы мы реализовали более 200 проектов 
-                  различной сложности - от небольших офисов до крупных промышленных комплексов.
+                  Компания ЭнергоАльянс-Крым была основана в 2010 году группой инженеров-энергетиков 
+                  с многолетним опытом работы в области возобновляемых источников энергии.
                 </p>
                 <p>
-                  Наша миссия - обеспечить максимальный уровень безопасности объектов наших клиентов 
-                  с помощью современных технологических решений и профессионального подхода к каждому проекту.
+                  За годы работы мы реализовали более 300 проектов различной сложности - 
+                  от небольших солнечных электростанций для частных домов до крупных промышленных комплексов.
                 </p>
                 <p>
-                  Мы предоставляем полный спектр услуг: от разработки проектной документации 
-                  до пуско-наладочных работ и дальнейшего технического обслуживания систем.
+                  Наша миссия - способствовать энергетической независимости и экологической 
+                  безопасности через внедрение современных возобновляемых технологий.
                 </p>
-              </div>
-              
-              <div className="grid grid-cols-3 gap-6 mt-8">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary mb-2">200+</div>
-                  <div className="text-sm text-gray-600">Выполненных проектов</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary mb-2">15</div>
-                  <div className="text-sm text-gray-600">Лет на рынке</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary mb-2">24/7</div>
-                  <div className="text-sm text-gray-600">Техподдержка</div>
-                </div>
               </div>
             </div>
             
-            <div className="space-y-6">
-              <h3 className="text-2xl font-semibold text-gray-900">Наши принципы</h3>
-              <div className="space-y-4">
-                {[
-                  "Качество превыше скорости",
-                  "Индивидуальный подход к каждому клиенту", 
-                  "Использование проверенных технологий",
-                  "Прозрачность в работе и ценообразовании",
-                  "Постоянное развитие и обучение",
-                  "Ответственность за результат"
-                ].map((principle, idx) => (
-                  <div key={idx} className="flex items-center">
-                    <Icon name="CheckCircle" className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" />
-                    <span className="text-gray-700">{principle}</span>
-                  </div>
-                ))}
-              </div>
+            <div className="relative animate-fade-in">
+              <img 
+                src="/img/40dc4d51-e213-4707-bcc4-fe5071228f33.jpg" 
+                alt="Энергоаудит и консалтинг"
+                className="w-full h-80 object-cover rounded-lg image-glow hover-scale"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/30 to-transparent rounded-lg"></div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Timeline */}
+      {/* История развития */}
       <section className="py-20 px-4 bg-slate-50">
         <div className="container mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 animate-slide-up">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">История развития</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Ключевые вехи в развитии нашей компании
@@ -216,9 +206,9 @@ const About = () => {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {milestones.map((milestone, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow">
+              <Card key={index} className="hover:shadow-lg transition-all duration-300 animate-slide-up hover-scale" style={{animationDelay: `${index * 0.1}s`}}>
                 <CardContent className="p-6">
-                  <div className="text-3xl font-bold text-primary mb-2">{milestone.year}</div>
+                  <div className="text-3xl font-bold text-primary mb-2 animate-pulse-slow">{milestone.year}</div>
                   <h3 className="font-semibold text-lg mb-2">{milestone.event}</h3>
                   <p className="text-gray-600 text-sm">{milestone.description}</p>
                 </CardContent>
@@ -228,21 +218,21 @@ const About = () => {
         </div>
       </section>
 
-      {/* Team */}
+      {/* Команда */}
       <section className="py-20 px-4 bg-white">
         <div className="container mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 animate-slide-up">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Наша команда</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Профессиональные инженеры с многолетним опытом работы
+              Профессиональные инженеры с многолетним опытом в энергетике
             </p>
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {team.map((member, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow">
+              <Card key={index} className="text-center hover:shadow-lg transition-all duration-300 animate-slide-up hover-scale" style={{animationDelay: `${index * 0.1}s`}}>
                 <CardContent className="p-6">
-                  <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 animate-float">
                     <Icon name="User" className="h-10 w-10 text-primary" />
                   </div>
                   <h3 className="font-semibold text-lg mb-1">{member.name}</h3>
@@ -263,21 +253,21 @@ const About = () => {
         </div>
       </section>
 
-      {/* Advantages */}
+      {/* Преимущества */}
       <section className="py-20 px-4 bg-slate-50">
         <div className="container mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 animate-slide-up">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Наши преимущества</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Что делает нас надежным партнером в области систем безопасности
+              Что делает нас надежным партнером в области энергетических решений
             </p>
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {advantages.map((advantage, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow">
+              <Card key={index} className="hover:shadow-lg transition-all duration-300 animate-slide-up hover-scale" style={{animationDelay: `${index * 0.1}s`}}>
                 <CardContent className="p-6">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 animate-float">
                     <Icon name={advantage.icon} className="h-6 w-6 text-primary" />
                   </div>
                   <h3 className="font-semibold text-lg mb-2">{advantage.title}</h3>
@@ -289,22 +279,22 @@ const About = () => {
         </div>
       </section>
 
-      {/* Certificates */}
+      {/* Лицензии и сертификаты */}
       <section className="py-20 px-4 bg-white">
         <div className="container mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 animate-slide-up">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Лицензии и сертификаты</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Все необходимые разрешительные документы для работы в сфере безопасности
+              Все необходимые разрешительные документы для работы в энергетической сфере
             </p>
           </div>
           
           <div className="grid md:grid-cols-2 gap-8">
             {certificates.map((cert, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow">
+              <Card key={index} className="hover:shadow-lg transition-all duration-300 animate-slide-up hover-scale" style={{animationDelay: `${index * 0.1}s`}}>
                 <CardHeader>
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 animate-float">
                       <Icon name={cert.icon} className="h-6 w-6 text-primary" />
                     </div>
                     <div>
@@ -323,19 +313,26 @@ const About = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 bg-secondary text-white">
-        <div className="container mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-6">Готовы стать нашим партнером?</h2>
-          <p className="text-lg mb-8 opacity-90 max-w-2xl mx-auto">
-            Свяжитесь с нами для обсуждения возможностей сотрудничества
+      <section className="py-20 px-4 bg-gradient-to-r from-blue-900 to-purple-900 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <img 
+            src="/img/ba8acdc6-6289-4879-ac92-6873b1db705b.jpg" 
+            alt="Промышленное оборудование" 
+            className="w-full h-full object-cover animate-pulse-slow"
+          />
+        </div>
+        <div className="container mx-auto text-center relative z-10 animate-slide-up">
+          <h2 className="text-4xl font-bold mb-6 text-white">Готовы к сотрудничеству?</h2>
+          <p className="text-lg mb-8 text-gray-300 max-w-2xl mx-auto">
+            Свяжитесь с нами для обсуждения вашего энергетического проекта
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="outline" className="px-8 py-3 bg-white text-secondary hover:bg-gray-100">
+            <Button size="lg" variant="outline" className="px-8 py-3 bg-white text-gray-900 hover:bg-gray-100 hover-scale">
               <Icon name="Phone" className="mr-2 h-5 w-5" />
-              +7 (495) 123-45-67
+              +7 (978) 713-39-59
             </Button>
             <Link to="/contact">
-              <Button size="lg" className="px-8 py-3 bg-primary hover:bg-primary/90">
+              <Button size="lg" className="px-8 py-3 bg-blue-600 hover:bg-blue-700 hover-scale">
                 <Icon name="Mail" className="mr-2 h-5 w-5" />
                 Написать нам
               </Button>
