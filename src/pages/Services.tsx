@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
 import Navigation from '@/components/Navigation';
+import { Link } from 'react-router-dom';
 
 const Services = () => {
   const services = [
