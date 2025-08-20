@@ -50,6 +50,27 @@ const Index = () => {
       icon: "Wrench",
       image: "/img/690dd835-afef-4567-80a7-a18bfa2eabe5.jpg",
       features: ["Плановое ТО", "Аварийный ремонт", "Модернизация"]
+    },
+    {
+      title: "Системы резервного питания",
+      description: "ИБП и дизель-генераторы",
+      icon: "Battery",
+      image: "/img/463ab5d4-6201-462a-aa9f-a2d52d103122.jpg",
+      features: ["Источники бесперебойного питания", "Дизельные генераторы", "АВР системы"]
+    },
+    {
+      title: "Молниезащита и заземление",
+      description: "Защита объектов от перенапряжений",
+      icon: "Zap",
+      image: "/img/40dc4d51-e213-4707-bcc4-fe5071228f33.jpg",
+      features: ["Проектирование молниезащиты", "Контур заземления", "Измерения сопротивления"]
+    },
+    {
+      title: "Системы учета энергоресурсов",
+      description: "АСКУЭ и умный учет",
+      icon: "Activity",
+      image: "/img/ba8acdc6-6289-4879-ac92-6873b1db705b.jpg",
+      features: ["Автоматизированный учет", "Дистанционный сбор данных", "Аналитика потребления"]
     }
   ];
 
@@ -110,11 +131,11 @@ const Index = () => {
         
         <div className="container mx-auto text-center relative z-10">
           <div className="max-w-4xl mx-auto">
-            <Badge className="mb-6 bg-blue-600 hover:bg-blue-700 animate-slide-up text-white">Профессиональные решения</Badge>
+            <Badge className="mb-6 bg-blue-600 hover:bg-blue-700 animate-slide-up text-white">Энергетика будущего</Badge>
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight animate-slide-up">
-              Энергетические 
+              Комплексные 
               <br />
-              <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">решения</span>
+              <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">энергосистемы</span>
             </h1>
             <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto animate-fade-in">
               Проектируем, монтируем и обслуживаем энергетические системы любой сложности. 
@@ -159,7 +180,7 @@ const Index = () => {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-secondary mb-4">Наши услуги</h2>
             <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-              Комплексные решения для обеспечения безопасности объектов любой сложности
+              Полный спектр услуг в области электроэнергетики и инженерных систем
             </p>
           </div>
           
