@@ -97,10 +97,10 @@ const Index = () => {
             </div>
             <nav className="hidden md:flex space-x-8">
               <Link to="/services" className="text-slate-600 hover:text-primary transition-colors">Услуги</Link>
+              <Link to="/design" className="text-slate-600 hover:text-primary transition-colors">Проектирование</Link>
               <Link to="/projects" className="text-slate-600 hover:text-primary transition-colors">Проекты</Link>
-              <a href="#about" className="text-slate-600 hover:text-primary transition-colors">О компании</a>
-              <a href="#certificates" className="text-slate-600 hover:text-primary transition-colors">Сертификаты</a>
-              <a href="#contact" className="text-slate-600 hover:text-primary transition-colors">Контакты</a>
+              <Link to="/about" className="text-slate-600 hover:text-primary transition-colors">О компании</Link>
+              <Link to="/contact" className="text-slate-600 hover:text-primary transition-colors">Контакты</Link>
             </nav>
             <Button className="hidden md:block">
               Консультация
