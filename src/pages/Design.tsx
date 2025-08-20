@@ -2,7 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
-import { Link } from 'react-router-dom';
+import Navigation from '@/components/Navigation';
 
 const Design = () => {
   const designServices = [

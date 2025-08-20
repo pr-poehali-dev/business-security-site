@@ -4,7 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import Icon from '@/components/ui/icon';
-import { Link } from 'react-router-dom';
+import Navigation from '@/components/Navigation';
 
 const Index = () => {
   const services = [
@@ -86,28 +86,8 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
-      {/* Навигация */}
-      <header className="bg-white/90 backdrop-blur-sm sticky top-0 z-50 border-b">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <Icon name="Shield" className="h-8 w-8 text-primary" />
-              <span className="text-xl font-bold text-secondary">ЭнергоАльянс-Крым</span>
-            </div>
-            <nav className="hidden md:flex space-x-8">
-              <Link to="/services" className="text-slate-600 hover:text-primary transition-colors">Услуги</Link>
-              <Link to="/design" className="text-slate-600 hover:text-primary transition-colors">Проектирование</Link>
-              <Link to="/projects" className="text-slate-600 hover:text-primary transition-colors">Проекты</Link>
-              <Link to="/about" className="text-slate-600 hover:text-primary transition-colors">О компании</Link>
-              <Link to="/contact" className="text-slate-600 hover:text-primary transition-colors">Контакты</Link>
-            </nav>
-            <Button className="hidden md:block">
-              Консультация
-            </Button>
-          </div>
-        </div>
-      </header>
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+      <Navigation />
 
       {/* Hero секция */}
       <section className="relative py-20 px-4">

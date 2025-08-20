@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
-import { Link } from 'react-router-dom';
+import Navigation from '@/components/Navigation';
 
 const Services = () => {
   const services = [
@@ -138,38 +138,16 @@ const Services = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-      {/* Header */}
-      <header className="bg-white/80 backdrop-blur-md border-b sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <Link to="/" className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                <Icon name="Shield" className="h-6 w-6 text-white" />
-              </div>
-              <div>
-                <h1 className="text-xl font-bold text-gray-900">ЭнергоАльянс-Крым</h1>
-                <p className="text-sm text-gray-600">Системы безопасности</p>
-              </div>
-            </Link>
-            <nav className="hidden md:flex space-x-8">
-              <Link to="/services" className="text-primary font-medium">Услуги</Link>
-              <Link to="/projects" className="text-gray-700 hover:text-primary transition-colors">Проекты</Link>
-              <Link to="/about" className="text-gray-700 hover:text-primary transition-colors">О нас</Link>
-              <Link to="/contact" className="text-gray-700 hover:text-primary transition-colors">Контакты</Link>
-            </nav>
-            <Button>Получить консультацию</Button>
-          </div>
-        </div>
-      </header>
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+      <Navigation />
 
       {/* Hero Section */}
       <section className="py-16 px-4">
         <div className="container mx-auto text-center">
-          <h1 className="text-5xl font-bold text-gray-900 mb-6">
+          <h1 className="text-5xl font-bold text-white mb-6">
             Наши <span className="text-primary">услуги</span>
           </h1>
-          <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+          <p className="text-xl text-slate-300 mb-8 max-w-3xl mx-auto">
             Полный спектр услуг по проектированию, монтажу и обслуживанию систем безопасности
           </p>
         </div>
@@ -180,27 +158,27 @@ const Services = () => {
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-12">
             {services.map((service, index) => (
-              <Card key={index} className="group hover:shadow-2xl transition-all duration-300">
+              <Card key={index} className="group hover:shadow-2xl transition-all duration-300 bg-slate-800/50 border-slate-700">
                 <CardHeader className="pb-4">
                   <div className="flex items-start justify-between mb-4">
                     <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                       <Icon name={service.icon} className="h-8 w-8 text-primary" />
                     </div>
-                    <Badge variant="outline" className="text-primary border-primary">
+                    <Badge variant="outline" className="text-primary border-primary bg-slate-900/50">
                       {service.price}
                     </Badge>
                   </div>
-                  <CardTitle className="text-2xl mb-2">{service.title}</CardTitle>
-                  <CardDescription className="text-gray-600 text-base">
+                  <CardTitle className="text-2xl mb-2 text-white">{service.title}</CardTitle>
+                  <CardDescription className="text-slate-300 text-base">
                     {service.description}
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div>
-                    <h4 className="font-semibold mb-3 text-gray-900">Возможности системы:</h4>
+                    <h4 className="font-semibold mb-3 text-white">Возможности системы:</h4>
                     <div className="grid grid-cols-1 gap-2">
                       {service.features.map((feature, idx) => (
-                        <div key={idx} className="flex items-center text-sm text-gray-700">
+                        <div key={idx} className="flex items-center text-sm text-slate-300">
                           <Icon name="Check" className="h-4 w-4 text-green-500 mr-2 flex-shrink-0" />
                           {feature}
                         </div>
@@ -209,10 +187,10 @@ const Services = () => {
                   </div>
                   
                   <div>
-                    <h4 className="font-semibold mb-3 text-gray-900">Используемые технологии:</h4>
+                    <h4 className="font-semibold mb-3 text-white">Используемые технологии:</h4>
                     <div className="flex flex-wrap gap-2">
                       {service.technologies.map((tech, idx) => (
-                        <Badge key={idx} variant="secondary" className="text-xs">
+                        <Badge key={idx} variant="secondary" className="text-xs bg-slate-700 text-slate-300">
                           {tech}
                         </Badge>
                       ))}
@@ -220,10 +198,10 @@ const Services = () => {
                   </div>
 
                   <div>
-                    <h4 className="font-semibold mb-3 text-gray-900">Типы объектов:</h4>
+                    <h4 className="font-semibold mb-3 text-white">Типы объектов:</h4>
                     <div className="flex flex-wrap gap-2">
                       {service.projects.map((project, idx) => (
-                        <Badge key={idx} variant="outline" className="text-xs">
+                        <Badge key={idx} variant="outline" className="text-xs border-slate-600 text-slate-300">
                           {project}
                         </Badge>
                       ))}
@@ -242,24 +220,24 @@ const Services = () => {
       </section>
 
       {/* Process Section */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-20 px-4 bg-slate-800/50">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Этапы работы</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <h2 className="text-4xl font-bold text-white mb-4">Этапы работы</h2>
+            <p className="text-lg text-slate-300 max-w-2xl mx-auto">
               Прозрачный процесс от консультации до сдачи объекта в эксплуатацию
             </p>
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {processSteps.map((step, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow">
+              <Card key={index} className="text-center hover:shadow-lg transition-shadow bg-slate-900/50 border-slate-700">
                 <CardContent className="p-8">
                   <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
                     <span className="text-2xl font-bold text-white">{step.step}</span>
                   </div>
-                  <h3 className="font-semibold text-lg mb-2">{step.title}</h3>
-                  <p className="text-gray-600 text-sm">{step.description}</p>
+                  <h3 className="font-semibold text-lg mb-2 text-white">{step.title}</h3>
+                  <p className="text-slate-300 text-sm">{step.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -268,14 +246,14 @@ const Services = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 bg-secondary text-white">
+      <section className="py-20 px-4 bg-gradient-to-r from-slate-900 to-slate-800 text-white">
         <div className="container mx-auto text-center">
           <h2 className="text-4xl font-bold mb-6">Готовы обсудить ваш проект?</h2>
           <p className="text-lg mb-8 opacity-90 max-w-2xl mx-auto">
             Наши инженеры проведут бесплатную консультацию и подготовят техническое предложение
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="outline" className="px-8 py-3 bg-white text-secondary hover:bg-gray-100">
+            <Button size="lg" variant="outline" className="px-8 py-3 bg-slate-800/50 text-white border-slate-600 hover:bg-slate-700/50">
               <Icon name="Phone" className="mr-2 h-5 w-5" />
               +7 (495) 123-45-67
             </Button>
