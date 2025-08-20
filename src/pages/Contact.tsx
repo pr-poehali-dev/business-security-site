@@ -5,6 +5,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
 import Navigation from '@/components/Navigation';
+import ContactForm from '@/components/ContactForm';
 import { Link } from 'react-router-dom';
 
 const Contact = () => {
@@ -173,71 +174,10 @@ const Contact = () => {
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Основная форма */}
-            <Card className="p-8 animate-slide-up hover-scale">
-              <CardHeader className="px-0 pt-0">
-                <CardTitle className="text-2xl">Получить консультацию</CardTitle>
-                <CardDescription>
-                  Заполните форму и наш специалист свяжется с вами в течение 30 минут
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="px-0 pb-0">
-                <form className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="text-sm font-medium mb-1 block">Ваше имя *</label>
-                      <Input placeholder="Иван Петров" />
-                    </div>
-                    <div>
-                      <label className="text-sm font-medium mb-1 block">Компания</label>
-                      <Input placeholder="ООО 'Название'" />
-                    </div>
-                  </div>
-                  
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="text-sm font-medium mb-1 block">Телефон *</label>
-                      <Input placeholder="+7 (___) ___-__-__" type="tel" />
-                    </div>
-                    <div>
-                      <label className="text-sm font-medium mb-1 block">Email</label>
-                      <Input placeholder="ivan@company.ru" type="email" />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="text-sm font-medium mb-1 block">Тип объекта</label>
-                    <Input placeholder="Частный дом, предприятие, торговый центр..." />
-                  </div>
-
-                  <div>
-                    <label className="text-sm font-medium mb-1 block">Потребляемая мощность (кВт)</label>
-                    <Input placeholder="50" type="number" />
-                  </div>
-
-                  <div>
-                    <label className="text-sm font-medium mb-1 block">Описание задач *</label>
-                    <Textarea 
-                      placeholder="Опишите ваши потребности: солнечные панели, энергоаудит, автоматизация и т.д."
-                      rows={4} 
-                    />
-                  </div>
-
-                  <div>
-                    <label className="text-sm font-medium mb-1 block">Желаемый бюджет</label>
-                    <Input placeholder="от 1 000 000 рублей" />
-                  </div>
-
-                  <Button className="w-full hover-scale" size="lg">
-                    <Icon name="Send" className="mr-2 h-5 w-5" />
-                    Отправить заявку
-                  </Button>
-                  
-                  <p className="text-xs text-gray-500 text-center">
-                    * Обязательные поля. Нажимая кнопку, вы соглашаетесь с обработкой персональных данных
-                  </p>
-                </form>
-              </CardContent>
-            </Card>
+            <ContactForm 
+              title="Получить консультацию"
+              description="Заполните форму и наш специалист свяжется с вами в течение 30 минут"
+            />
 
             {/* Экспресс-заявки */}
             <div className="space-y-6">

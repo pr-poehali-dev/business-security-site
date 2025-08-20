@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import Icon from '@/components/ui/icon';
 import Navigation from '@/components/Navigation';
+import ContactForm from '@/components/ContactForm';
 
 const Index = () => {
   const services = [
