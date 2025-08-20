@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
 import Navigation from '@/components/Navigation';
+import { Link } from 'react-router-dom';
 
 const Projects = () => {
   const projects = [
@@ -120,26 +121,6 @@ const Projects = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
       <Navigation />
-          <div className="flex items-center justify-between">
-            <Link to="/" className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                <Icon name="Shield" className="h-6 w-6 text-white" />
-              </div>
-              <div>
-                <h1 className="text-xl font-bold text-gray-900">ЭнергоАльянс-Крым</h1>
-                <p className="text-sm text-gray-600">Системы безопасности</p>
-              </div>
-            </Link>
-            <nav className="hidden md:flex space-x-8">
-              <Link to="/services" className="text-gray-700 hover:text-primary transition-colors">Услуги</Link>
-              <Link to="/projects" className="text-primary font-medium">Проекты</Link>
-              <Link to="/about" className="text-gray-700 hover:text-primary transition-colors">О нас</Link>
-              <Link to="/contact" className="text-gray-700 hover:text-primary transition-colors">Контакты</Link>
-            </nav>
-            <Button>Получить консультацию</Button>
-          </div>
-        </div>
-      </header>
 
       {/* Hero Section */}
       <section className="py-16 px-4">
