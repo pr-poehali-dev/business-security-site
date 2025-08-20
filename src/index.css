@@ -150,6 +150,65 @@
   .image-glow:hover::after {
     opacity: 1;
   }
+
+  /* Особенная кнопка проектов */
+  .projects-button {
+    position: relative;
+    background: linear-gradient(45deg, #3b82f6, #8b5cf6, #06b6d4, #10b981);
+    background-size: 400% 400%;
+    animation: rainbow-border 3s ease infinite;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+
+  .projects-button::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #3b82f6, #8b5cf6, #06b6d4, #10b981);
+    background-size: 400% 400%;
+    animation: rainbow-border 3s ease infinite;
+    border-radius: inherit;
+    z-index: -1;
+  }
+
+  .projects-button:hover {
+    animation: neon-glow 1.5s ease-in-out infinite;
+    transform: scale(1.05);
+  }
+
+  .sparkle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 50%;
+    animation: sparkle 2s linear infinite;
+  }
+
+  .sparkle:nth-child(1) {
+    top: 20%;
+    left: 20%;
+    animation-delay: 0s;
+  }
+  .sparkle:nth-child(2) {
+    top: 20%;
+    right: 20%;
+    animation-delay: 0.5s;
+  }
+  .sparkle:nth-child(3) {
+    bottom: 20%;
+    left: 20%;
+    animation-delay: 1s;
+  }
+  .sparkle:nth-child(4) {
+    bottom: 20%;
+    right: 20%;
+    animation-delay: 1.5s;
+  }
 }
 
 @keyframes float {
@@ -191,5 +250,51 @@
   }
   to {
     opacity: 1;
+  }
+}
+
+@keyframes neon-glow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 5px rgba(59, 130, 246, 0.5),
+      0 0 10px rgba(59, 130, 246, 0.5),
+      0 0 15px rgba(59, 130, 246, 0.5),
+      0 0 20px rgba(59, 130, 246, 0.5);
+  }
+  50% {
+    box-shadow:
+      0 0 10px rgba(59, 130, 246, 0.8),
+      0 0 20px rgba(59, 130, 246, 0.8),
+      0 0 30px rgba(59, 130, 246, 0.8),
+      0 0 40px rgba(59, 130, 246, 0.8);
+  }
+}
+
+@keyframes sparkle {
+  0%,
+  100% {
+    transform: scale(0) rotate(0deg);
+  }
+  50% {
+    transform: scale(1) rotate(180deg);
+  }
+}
+
+@keyframes rainbow-border {
+  0% {
+    border-color: #3b82f6;
+  }
+  25% {
+    border-color: #8b5cf6;
+  }
+  50% {
+    border-color: #06b6d4;
+  }
+  75% {
+    border-color: #10b981;
+  }
+  100% {
+    border-color: #3b82f6;
   }
 }

@@ -124,9 +124,17 @@ const Index = () => {
                 <Icon name="Phone" className="mr-2 h-5 w-5" />
                 Получить консультацию
               </Button>
-              <Button variant="outline" size="lg" className="px-8 border-gray-600 text-white hover:bg-gray-800 hover-scale">
-                <Icon name="FileText" className="mr-2 h-5 w-5" />
-                Наши проекты
+              <Button 
+                size="lg" 
+                className="px-8 projects-button text-white font-bold relative overflow-hidden group transition-all duration-300"
+              >
+                <div className="sparkle"></div>
+                <div className="sparkle"></div>
+                <div className="sparkle"></div>
+                <div className="sparkle"></div>
+                <Icon name="Rocket" className="mr-2 h-5 w-5 group-hover:animate-bounce" />
+                <span className="relative z-10">🚀 НАШИ ПРОЕКТЫ</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
               </Button>
             </div>
           </div>
