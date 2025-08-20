@@ -4,6 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Icon from '@/components/ui/icon';
+import emailjs from '@emailjs/browser';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -26,6 +27,11 @@ interface ContactFormProps {
   description?: string;
 }
 
+// EmailJS настройки - ЗАМЕНИТЕ НА СВОИ!
+const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID'; // Получите на emailjs.com
+const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID'; // Создайте шаблон на emailjs.com  
+const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY'; // Ваш публичный ключ
+
 const ContactForm = ({ title = "Оставить заявку", description }: ContactFormProps) => {
   const [formData, setFormData] = useState<ContactFormData>({
     name: '',
@@ -33,74 +39,111 @@ const ContactForm = ({ title = "Оставить заявку", description }: C
     email: '',
     message: ''
   });
+  const [isLoading, setIsLoading] = useState(false);
   const [showDialog, setShowDialog] = useState(false);
-  const [dialogContent, setDialogContent] = useState({ title: '', description: '' });
-
-  // Telegram username или ID чата (замените на ваш)
-  const TELEGRAM_USERNAME = 'energoalliance_krym'; // Замените на ваш username без @
-  
-  // VK ID пользователя или сообщества (замените на ваш)
-  const VK_USER_ID = '123456789'; // Замените на ваш VK ID
+  const [dialogContent, setDialogContent] = useState({ 
+    title: '', 
+    description: '',
+    type: 'success' as 'success' | 'error'
+  });
 
   const formatMessage = () => {
     const date = new Date().toLocaleString('ru-RU');
-    return `🔔 *Новая заявка с сайта*
+    return `
+🔔 НОВАЯ ЗАЯВКА С САЙТА
 
 📅 Дата: ${date}
 👤 Имя: ${formData.name}
 📱 Телефон: ${formData.phone}
-📧 Email: ${formData.email}
-💬 Сообщение: ${formData.message}
+📧 Email: ${formData.email || 'Не указан'}
+💬 Сообщение: ${formData.message || 'Не указано'}
 
 #заявка #энергоальянскрым`;
   };
 
-  const sendToTelegram = () => {
-    const message = encodeURIComponent(formatMessage());
-    const telegramUrl = `https://t.me/${TELEGRAM_USERNAME}?text=${message}`;
-    window.open(telegramUrl, '_blank');
-  };
-
-  const sendToVK = () => {
-    const message = encodeURIComponent(formatMessage());
-    const vkUrl = `https://vk.me/id${VK_USER_ID}?text=${message}`;
-    window.open(vkUrl, '_blank');
-  };
-
-  const sendToWhatsApp = () => {
-    // Номер WhatsApp в международном формате без +
-    const whatsappNumber = '79787133959'; // Ваш номер
-    const message = encodeURIComponent(formatMessage());
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
-    window.open(whatsappUrl, '_blank');
-  };
-
-  const sendToEmail = () => {
-    const subject = encodeURIComponent('Новая заявка с сайта ЭнергоАльянс-Крым');
-    const body = encodeURIComponent(formatMessage().replace(/\*/g, ''));
-    const mailtoUrl = `mailto:info@energoalliance-crimea.ru?subject=${subject}&body=${body}`;
-    window.location.href = mailtoUrl;
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     // Валидация
     if (!formData.name || !formData.phone) {
       setDialogContent({
         title: 'Ошибка',
-        description: 'Пожалуйста, заполните обязательные поля: Имя и Телефон'
+        description: 'Пожалуйста, заполните обязательные поля: Имя и Телефон',
+        type: 'error'
       });
       setShowDialog(true);
       return;
     }
 
-    // Показываем диалог с опциями отправки
-    setDialogContent({
-      title: 'Заявка готова к отправке!',
-      description: 'Выберите удобный способ отправки заявки:'
-    });
-    setShowDialog(true);
+    setIsLoading(true);
+
+    try {
+      // Попытка отправить через EmailJS
+      if (EMAILJS_SERVICE_ID !== 'YOUR_SERVICE_ID') {
+        // Инициализация EmailJS
+        emailjs.init(EMAILJS_PUBLIC_KEY);
+        
+        const emailResult = await emailjs.send(
+          EMAILJS_SERVICE_ID,
+          EMAILJS_TEMPLATE_ID,
+          {
+            to_email: 'kuzminv994@gmail.com',
+            from_name: formData.name,
+            from_email: formData.email || 'не указан',
+            phone: formData.phone,
+            message: formData.message || 'не указано',
+            date: new Date().toLocaleString('ru-RU'),
+            formatted_message: formatMessage()
+          }
+        );
+
+        if (emailResult.status === 200) {
+          setDialogContent({
+            title: '✅ Заявка отправлена!',
+            description: 'Ваша заявка успешно отправлена. Мы свяжемся с вами в ближайшее время!',
+            type: 'success'
+          });
+          // Очищаем форму
+          setFormData({ name: '', phone: '', email: '', message: '' });
+        }
+      } else {
+        // Если EmailJS не настроен, показываем инструкции
+        setDialogContent({
+          title: '⚠️ Требуется настройка',
+          description: `Для автоматической отправки заявок необходимо:
+          
+1. Зарегистрироваться на emailjs.com
+2. Создать email сервис и шаблон
+3. Заменить в коде ContactForm.tsx:
+   - EMAILJS_SERVICE_ID
+   - EMAILJS_TEMPLATE_ID
+   - EMAILJS_PUBLIC_KEY
+
+А пока вы можете связаться с нами:
+📱 Telegram: @Lux570lx
+💬 VK: vk.com/f12.compet
+📧 Email: kuzminv994@gmail.com`,
+          type: 'error'
+        });
+      }
+
+    } catch (error) {
+      console.error('Ошибка отправки:', error);
+      setDialogContent({
+        title: '❌ Ошибка отправки',
+        description: `Не удалось отправить заявку автоматически.
+        
+Пожалуйста, свяжитесь с нами напрямую:
+📱 Telegram: @Lux570lx
+💬 VK: vk.com/f12.compet
+📧 Email: kuzminv994@gmail.com
+☎️ Телефон: +7 (978) 713-39-59`,
+        type: 'error'
+      });
+    } finally {
+      setIsLoading(false);
+      setShowDialog(true);
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -126,6 +169,7 @@ const ContactForm = ({ title = "Оставить заявку", description }: C
                 value={formData.name}
                 onChange={handleInputChange}
                 required
+                disabled={isLoading}
               />
             </div>
             <div>
@@ -136,6 +180,7 @@ const ContactForm = ({ title = "Оставить заявку", description }: C
                 value={formData.phone}
                 onChange={handleInputChange}
                 required
+                disabled={isLoading}
               />
             </div>
             <div>
@@ -145,6 +190,7 @@ const ContactForm = ({ title = "Оставить заявку", description }: C
                 type="email" 
                 value={formData.email}
                 onChange={handleInputChange}
+                disabled={isLoading}
               />
             </div>
             <div>
@@ -154,11 +200,26 @@ const ContactForm = ({ title = "Оставить заявку", description }: C
                 rows={4}
                 value={formData.message}
                 onChange={handleInputChange}
+                disabled={isLoading}
               />
             </div>
-            <Button type="submit" className="w-full" size="lg">
-              <Icon name="Send" className="mr-2 h-5 w-5" />
-              Отправить заявку
+            <Button 
+              type="submit" 
+              className="w-full" 
+              size="lg"
+              disabled={isLoading}
+            >
+              {isLoading ? (
+                <>
+                  <Icon name="Loader2" className="mr-2 h-5 w-5 animate-spin" />
+                  Отправка...
+                </>
+              ) : (
+                <>
+                  <Icon name="Send" className="mr-2 h-5 w-5" />
+                  Отправить заявку
+                </>
+              )}
             </Button>
             <p className="text-xs text-gray-500 text-center">
               Нажимая кнопку, вы соглашаетесь с обработкой персональных данных
@@ -168,59 +229,15 @@ const ContactForm = ({ title = "Оставить заявку", description }: C
       </Card>
 
       <AlertDialog open={showDialog} onOpenChange={setShowDialog}>
-        <AlertDialogContent className="max-w-md">
+        <AlertDialogContent className={dialogContent.type === 'error' ? 'max-w-lg' : 'max-w-md'}>
           <AlertDialogHeader>
             <AlertDialogTitle>{dialogContent.title}</AlertDialogTitle>
-            <AlertDialogDescription className="space-y-4">
-              <span>{dialogContent.description}</span>
-              
-              {dialogContent.title === 'Заявка готова к отправке!' && (
-                <div className="grid grid-cols-2 gap-3 mt-4">
-                  <Button 
-                    onClick={sendToTelegram}
-                    className="bg-[#0088cc] hover:bg-[#0077b5] flex items-center justify-center gap-2"
-                  >
-                    <Icon name="Send" className="h-4 w-4" />
-                    Telegram
-                  </Button>
-                  
-                  <Button 
-                    onClick={sendToVK}
-                    className="bg-[#4376A6] hover:bg-[#3a6694] flex items-center justify-center gap-2"
-                  >
-                    <Icon name="MessageCircle" className="h-4 w-4" />
-                    ВКонтакте
-                  </Button>
-                  
-                  <Button 
-                    onClick={sendToWhatsApp}
-                    className="bg-[#25D366] hover:bg-[#20BA59] flex items-center justify-center gap-2"
-                  >
-                    <Icon name="Phone" className="h-4 w-4" />
-                    WhatsApp
-                  </Button>
-                  
-                  <Button 
-                    onClick={sendToEmail}
-                    variant="outline"
-                    className="flex items-center justify-center gap-2"
-                  >
-                    <Icon name="Mail" className="h-4 w-4" />
-                    Email
-                  </Button>
-                </div>
-              )}
+            <AlertDialogDescription className="whitespace-pre-line">
+              {dialogContent.description}
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogAction onClick={() => {
-              if (dialogContent.title === 'Заявка готова к отправке!') {
-                // Очищаем форму после отправки
-                setFormData({ name: '', phone: '', email: '', message: '' });
-              }
-            }}>
-              Закрыть
-            </AlertDialogAction>
+            <AlertDialogAction>Понятно</AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
