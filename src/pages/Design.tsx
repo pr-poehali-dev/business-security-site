@@ -2,6 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
+import { Link } from 'react-router-dom';
 
 const Design = () => {
   const designServices = [
@@ -152,6 +153,29 @@ const Design = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
+      {/* Навигация */}
+      <header className="bg-white/90 backdrop-blur-sm sticky top-0 z-50 border-b">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-2">
+              <Icon name="Shield" className="h-8 w-8 text-primary" />
+              <span className="text-xl font-bold text-secondary">SecurityTech</span>
+            </div>
+            <nav className="hidden md:flex space-x-8">
+              <Link to="/" className="text-slate-600 hover:text-primary transition-colors">Главная</Link>
+              <Link to="/services" className="text-slate-600 hover:text-primary transition-colors">Услуги</Link>
+              <Link to="/design" className="text-primary font-semibold">Проектирование</Link>
+              <Link to="/projects" className="text-slate-600 hover:text-primary transition-colors">Проекты</Link>
+              <Link to="/about" className="text-slate-600 hover:text-primary transition-colors">О компании</Link>
+              <Link to="/contact" className="text-slate-600 hover:text-primary transition-colors">Контакты</Link>
+            </nav>
+            <Button className="hidden md:block">
+              Консультация
+            </Button>
+          </div>
+        </div>
+      </header>
+
       {/* Заголовок */}
       <section className="bg-gradient-to-r from-primary to-primary/80 text-white py-20">
         <div className="container mx-auto px-4">
