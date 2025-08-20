@@ -283,7 +283,7 @@ const Index = () => {
                 <div className="flex items-center">
                   <Icon name="Mail" className="h-6 w-6 mr-4 text-primary" />
                   <div>
-                    <div className="font-semibold">info@securitytech.ru</div>
+                    <div className="font-semibold">info@energoalliance-crimea.ru</div>
                     <div className="text-sm opacity-75">Ответим в течение часа</div>
                   </div>
                 </div>
@@ -341,7 +341,7 @@ const Index = () => {
             <div>
               <div className="flex items-center space-x-2 mb-4">
                 <Icon name="Shield" className="h-6 w-6 text-primary" />
-                <span className="font-bold">SecurityTech</span>
+                <span className="font-bold">ЭнергоАльянс-Крым</span>
               </div>
               <p className="text-slate-400 text-sm">
                 Профессиональные решения в области технических средств безопасности
@@ -373,14 +373,14 @@ const Index = () => {
               <div className="space-y-2 text-sm text-slate-400">
                 <div>+7 (978) 713-39-59
 +7 (978) 910 77-10</div>
-                <div>info@securitytech.ru</div>
+                <div>info@energoalliance-crimea.ru</div>
                 <div>Москва, ул. Технологическая, 15</div>
               </div>
             </div>
           </div>
           
           <div className="border-t border-slate-800 mt-8 pt-8 text-center text-sm text-slate-400">
-            © 2024 SecurityTech. Все права защищены.
+            © 2024 ЭнергоАльянс-Крым. Все права защищены.
           </div>
         </div>
       </footer>

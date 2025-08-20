@@ -148,10 +148,10 @@ const About = () => {
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">SecurityTech</h2>
+              <h2 className="text-4xl font-bold text-gray-900 mb-6">ЭнергоАльянс-Крым</h2>
               <div className="space-y-4 text-gray-600 text-lg">
                 <p>
-                  Компания SecurityTech была основана в 2009 году группой инженеров с многолетним опытом 
+                  Компания ЭнергоАльянс-Крым была основана в 2009 году группой инженеров с многолетним опытом 
                   работы в области систем безопасности. За годы работы мы реализовали более 200 проектов 
                   различной сложности - от небольших офисов до крупных промышленных комплексов.
                 </p>

@@ -31,7 +31,7 @@ const Navigation = () => {
               </div>
             </div>
             <div className="flex flex-col">
-              <span className="text-xl font-bold text-white tracking-tight">SecurityTech</span>
+              <span className="text-xl font-bold text-white tracking-tight">ЭнергоАльянс-Крым</span>
               <span className="text-xs text-slate-400 font-medium">Системы безопасности</span>
             </div>
           </Link>

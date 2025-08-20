@@ -13,7 +13,7 @@ const Contact = () => {
       title: "Главный офис",
       address: "г. Москва, ул. Профсоюзная, 78, офис 405",
       phone: "+7 (495) 123-45-67",
-      email: "info@securitytech.ru",
+      email: "info@energoalliance-crimea.ru",
       hours: "Пн-Пт: 9:00-18:00, Сб: 10:00-16:00",
       icon: "MapPin"
     },
@@ -21,7 +21,7 @@ const Contact = () => {
       title: "Отдел продаж",
       address: "г. Москва, ул. Профсоюзная, 78, офис 410",
       phone: "+7 (495) 123-45-68",
-      email: "sales@securitytech.ru",
+      email: "sales@energoalliance-crimea.ru",
       hours: "Пн-Пт: 9:00-19:00, Сб: 10:00-17:00",
       icon: "Phone"
     },
@@ -29,7 +29,7 @@ const Contact = () => {
       title: "Техническая поддержка",
       address: "Круглосуточно",
       phone: "+7 (495) 123-45-69",
-      email: "support@securitytech.ru", 
+      email: "support@energoalliance-crimea.ru", 
       hours: "24/7 без выходных",
       icon: "Headphones"
     }
