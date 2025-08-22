@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 import { Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
+import ThemeToggle from '@/components/ThemeToggle';
 
 const Navigation = () => {
   const location = useLocation();
@@ -66,6 +67,7 @@ const Navigation = () => {
 
           {/* CTA кнопка */}
           <div className="hidden lg:flex items-center space-x-4">
+            <ThemeToggle />
             <Button 
               className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold px-6 py-2 rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
             >
@@ -110,10 +112,13 @@ const Navigation = () => {
             </div>
             
             <div className="mt-4 pt-4 border-t border-slate-700/50">
-              <Button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-lg shadow-lg">
-                <Icon name="MessageCircle" className="mr-2 h-4 w-4" />
-                Консультация
-              </Button>
+              <div className="flex items-center justify-between gap-4">
+                <ThemeToggle />
+                <Button className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-lg shadow-lg">
+                  <Icon name="MessageCircle" className="mr-2 h-4 w-4" />
+                  Консультация
+                </Button>
+              </div>
             </div>
           </nav>
         </div>

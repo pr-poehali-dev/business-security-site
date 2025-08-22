@@ -225,31 +225,40 @@ const About = () => {
           <div className="text-center mb-16 animate-slide-up">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Наша команда</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Профессиональные инженеры с многолетним опытом в энергетике
+              Мы ценим профессионализм, ответственность и индивидуальный подход к каждому проекту
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {team.map((member, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-all duration-300 animate-slide-up hover-scale" style={{animationDelay: `${index * 0.1}s`}}>
-                <CardContent className="p-6">
-                  <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 animate-float">
-                    <Icon name="User" className="h-10 w-10 text-primary" />
-                  </div>
-                  <h3 className="font-semibold text-lg mb-1">{member.name}</h3>
-                  <p className="text-primary font-medium mb-2">{member.position}</p>
-                  <Badge variant="outline" className="mb-3">{member.experience}</Badge>
-                  <p className="text-sm text-gray-600 mb-3">{member.specialization}</p>
-                  <div className="space-y-1">
-                    {member.achievements.map((achievement, idx) => (
-                      <div key={idx} className="text-xs text-gray-500">
-                        • {achievement}
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            <Card className="text-center hover:shadow-lg transition-all duration-300 animate-slide-up hover-scale">
+              <CardContent className="p-6">
+                <div className="w-20 h-20 bg-blue-500/10 rounded-full flex items-center justify-center mx-auto mb-4 animate-float">
+                  <Icon name="Users" className="h-10 w-10 text-blue-500" />
+                </div>
+                <h3 className="font-semibold text-xl mb-2">50+ специалистов</h3>
+                <p className="text-gray-600">Квалифицированные инженеры и монтажники с опытом работы на сложных объектах</p>
+              </CardContent>
+            </Card>
+            
+            <Card className="text-center hover:shadow-lg transition-all duration-300 animate-slide-up hover-scale" style={{animationDelay: '0.1s'}}>
+              <CardContent className="p-6">
+                <div className="w-20 h-20 bg-purple-500/10 rounded-full flex items-center justify-center mx-auto mb-4 animate-float">
+                  <Icon name="Award" className="h-10 w-10 text-purple-500" />
+                </div>
+                <h3 className="font-semibold text-xl mb-2">Постоянное обучение</h3>
+                <p className="text-gray-600">Регулярное повышение квалификации и сертификация сотрудников</p>
+              </CardContent>
+            </Card>
+            
+            <Card className="text-center hover:shadow-lg transition-all duration-300 animate-slide-up hover-scale" style={{animationDelay: '0.2s'}}>
+              <CardContent className="p-6">
+                <div className="w-20 h-20 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-4 animate-float">
+                  <Icon name="Target" className="h-10 w-10 text-green-500" />
+                </div>
+                <h3 className="font-semibold text-xl mb-2">Командная работа</h3>
+                <p className="text-gray-600">Эффективное взаимодействие всех отделов для достижения наилучшего результата</p>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
@@ -330,7 +339,7 @@ const About = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" variant="outline" className="px-8 py-3 bg-white text-gray-900 hover:bg-gray-100 hover-scale">
               <Icon name="Phone" className="mr-2 h-5 w-5" />
-+7 (978) 713-39-59
++7 978 910-77-10
             </Button>
             <Link to="/contact">
               <Button size="lg" className="px-8 py-3 bg-blue-600 hover:bg-blue-700 hover-scale">

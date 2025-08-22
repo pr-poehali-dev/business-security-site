@@ -12,25 +12,25 @@ const Contact = () => {
   const contactInfo = [
     {
       title: "Главный офис",
-      address: "г. Симферополь, ул. Энергетическая, 15",
-      phone: "+7 (978) 713-39-59",
-      email: "info@energoalliance-crimea.ru",
+      address: "г.Симферополь, ул. Комунальная, 20",
+      phone: "+7 978 910-77-10",
+      email: "crimea-alliance@list.ru",
       hours: "Пн-Пт: 8:00-18:00, Сб: 9:00-15:00",
       icon: "MapPin"
     },
     {
       title: "Отдел продаж",
-      address: "г. Симферополь, ул. Энергетическая, 15",
-      phone: "+7 (978) 910-77-10",
-      email: "sales@energoalliance-crimea.ru",
+      address: "г.Симферополь, ул. Комунальная, 20",
+      phone: "+7 978 910-77-10",
+      email: "crimea-alliance@list.ru",
       hours: "Пн-Пт: 8:00-19:00, Сб: 9:00-16:00",
       icon: "Phone"
     },
     {
       title: "Техническая поддержка",
       address: "Круглосуточно по всему Крыму",
-      phone: "+7 (978) 713-39-59",
-      email: "support@energoalliance-crimea.ru", 
+      phone: "+7 978 910-77-10",
+      email: "crimea-alliance@list.ru", 
       hours: "24/7 без выходных",
       icon: "Headphones"
     }
@@ -108,12 +108,12 @@ const Contact = () => {
               <div className="bg-white/10 backdrop-blur rounded-lg p-6 hover-scale">
                 <Icon name="Phone" className="h-8 w-8 text-blue-400 mx-auto mb-3 animate-pulse-slow" />
                 <p className="text-gray-300 text-sm mb-2">Звоните прямо сейчас</p>
-                <p className="text-xl font-bold text-white">+7 (978) 713-39-59</p>
+                <p className="text-xl font-bold text-white">+7 978 910-77-10</p>
               </div>
               <div className="bg-white/10 backdrop-blur rounded-lg p-6 hover-scale">
                 <Icon name="Mail" className="h-8 w-8 text-blue-400 mx-auto mb-3 animate-pulse-slow" />
                 <p className="text-gray-300 text-sm mb-2">Напишите нам</p>
-                <p className="text-xl font-bold text-white">info@energoalliance-crimea.ru</p>
+                <p className="text-xl font-bold text-white">crimea-alliance@list.ru</p>
               </div>
             </div>
           </div>
@@ -226,7 +226,7 @@ const Contact = () => {
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
                       <span className="font-medium text-red-800">Телефон:</span>
-                      <span className="text-lg font-bold text-red-600">+7 (978) 713-39-59</span>
+                      <span className="text-lg font-bold text-red-600">+7 978 910-77-10</span>
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="font-medium text-red-800">Время реагирования:</span>
@@ -261,7 +261,7 @@ const Contact = () => {
                   Как нас найти
                 </h4>
                 <p className="text-sm text-gray-600 mb-4">
-                  г. Симферополь, ул. Энергетическая, 15, офис 204
+                  г.Симферополь, ул. Комунальная, 20
                 </p>
                 <div className="space-y-3 text-sm">
                   <div className="flex items-start space-x-3">
@@ -270,7 +270,7 @@ const Contact = () => {
                   </div>
                   <div className="flex items-start space-x-3">
                     <Icon name="Bus" className="h-4 w-4 text-primary mt-0.5" />
-                    <span className="text-gray-600">Автобус № 12, 15 до остановки "Энергетическая"</span>
+                    <span className="text-gray-600">Автобус № 12, 15 до остановки "Комунальная"</span>
                   </div>
                 </div>
               </div>
@@ -303,6 +303,24 @@ const Contact = () => {
                 <Button variant="outline" size="sm" className="hover-scale">
                   Заказать выезд
                 </Button>
+              </div>
+              
+              {/* Яндекс Карта */}
+              <div className="mt-8 p-4 bg-gray-100 rounded-lg">
+                <h4 className="font-semibold mb-3 flex items-center">
+                  <Icon name="Map" className="h-5 w-5 mr-2 text-primary" />
+                  Наш офис на карте
+                </h4>
+                <div className="w-full h-80 bg-gray-200 rounded-lg overflow-hidden">
+                  <iframe 
+                    src="https://yandex.ru/map-widget/v1/?um=constructor%3Aae3b0f5fce5a7f5c8b0c5b5e5f5e5e5e&source=constructor"
+                    width="100%" 
+                    height="100%" 
+                    frameBorder="0"
+                    allowFullScreen={true}
+                    style={{ position: 'relative' }}
+                  ></iframe>
+                </div>
               </div>
             </div>
           </div>

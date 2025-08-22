@@ -87,7 +87,7 @@ const ContactForm = ({ title = "Оставить заявку", description }: C
           EMAILJS_SERVICE_ID,
           EMAILJS_TEMPLATE_ID,
           {
-            to_email: 'kuzminv994@gmail.com',
+            to_email: 'crimea-alliance@list.ru',
             from_name: formData.name,
             from_email: formData.email || 'не указан',
             phone: formData.phone,
@@ -120,9 +120,8 @@ const ContactForm = ({ title = "Оставить заявку", description }: C
    - EMAILJS_PUBLIC_KEY
 
 А пока вы можете связаться с нами:
-📱 Telegram: @Lux570lx
-💬 VK: vk.com/f12.compet
-📧 Email: kuzminv994@gmail.com`,
+📱 Телефон: +7 978 910-77-10
+📧 Email: crimea-alliance@list.ru`,
           type: 'error'
         });
       }
@@ -134,10 +133,8 @@ const ContactForm = ({ title = "Оставить заявку", description }: C
         description: `Не удалось отправить заявку автоматически.
         
 Пожалуйста, свяжитесь с нами напрямую:
-📱 Telegram: @Lux570lx
-💬 VK: vk.com/f12.compet
-📧 Email: kuzminv994@gmail.com
-☎️ Телефон: +7 (978) 713-39-59`,
+📱 Телефон: +7 978 910-77-10
+📧 Email: crimea-alliance@list.ru`,
         type: 'error'
       });
     } finally {

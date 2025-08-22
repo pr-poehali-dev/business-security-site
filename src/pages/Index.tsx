@@ -10,22 +10,22 @@ import ContactForm from '@/components/ContactForm';
 const Index = () => {
   const services = [
     {
-      title: "Солнечные электростанции",
-      description: "Проектирование и монтаж солнечных панелей",
-      icon: "Sun",
-      image: "/img/dee0c0fd-ef5e-49b5-9500-5b8b0706fb01.jpg",
-      features: ["Солнечные панели", "Инверторы", "Системы крепления"]
+      title: "Насосные станции",
+      description: "Проектирование, монтаж и обслуживание насосных станций",
+      icon: "Waves",
+      image: "/img/b7b720c7-554f-45aa-8c67-ccaf7e6723c4.jpg",
+      features: ["Промышленные насосы", "Системы управления", "Автоматизация процессов"]
     },
     {
-      title: "Электротехническое проектирование",
-      description: "Разработка проектной документации",
+      title: "Подготовка проектной документации",
+      description: "Полный комплект технической документации для объектов",
       icon: "FileText",
-      image: "/img/690dd835-afef-4567-80a7-a18bfa2eabe5.jpg",
-      features: ["Схемы электроснабжения", "Расчеты нагрузок", "Техническая документация"]
+      image: "/img/5f087d7d-2bff-4a21-ba73-8e8e72e99564.jpg",
+      features: ["Рабочие чертежи", "Сметная документация", "Согласование в инстанциях"]
     },
     {
       title: "Промышленная автоматизация",
-      description: "Системы управления и контроля",
+      description: "Системы управления и контроля (услуга в разработке!)",
       icon: "Settings",
       image: "/img/ba8acdc6-6289-4879-ac92-6873b1db705b.jpg",
       features: ["АСУТП", "Диспетчеризация", "Автоматическое управление"]
@@ -36,13 +36,6 @@ const Index = () => {
       icon: "Zap",
       image: "/img/463ab5d4-6201-462a-aa9f-a2d52d103122.jpg",
       features: ["Силовые кабели", "Электрощитовое оборудование", "Заземление"]
-    },
-    {
-      title: "Энергоаудит и консалтинг",
-      description: "Оптимизация энергопотребления",
-      icon: "TrendingUp",
-      image: "/img/40dc4d51-e213-4707-bcc4-fe5071228f33.jpg",
-      features: ["Анализ энергопотребления", "Рекомендации по экономии", "Техническая экспертиза"]
     },
     {
       title: "Обслуживание и ремонт",
@@ -64,13 +57,6 @@ const Index = () => {
       icon: "Zap",
       image: "/img/40dc4d51-e213-4707-bcc4-fe5071228f33.jpg",
       features: ["Проектирование молниезащиты", "Контур заземления", "Измерения сопротивления"]
-    },
-    {
-      title: "Системы учета энергоресурсов",
-      description: "АСКУЭ и умный учет",
-      icon: "Activity",
-      image: "/img/ba8acdc6-6289-4879-ac92-6873b1db705b.jpg",
-      features: ["Автоматизированный учет", "Дистанционный сбор данных", "Аналитика потребления"]
     }
   ];
 
@@ -133,9 +119,9 @@ const Index = () => {
           <div className="max-w-4xl mx-auto">
             <Badge className="mb-6 bg-blue-600 hover:bg-blue-700 animate-slide-up text-white">Энергетика будущего</Badge>
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight animate-slide-up">
-              Комплексные 
+              Электричество
               <br />
-              <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">энергосистемы</span>
+              <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">под ключ</span>
             </h1>
             <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto animate-fade-in">
               Проектируем, монтируем и обслуживаем энергетические системы любой сложности. 
@@ -334,21 +320,21 @@ const Index = () => {
                 <div className="flex items-center">
                   <Icon name="Phone" className="h-6 w-6 mr-4 text-primary" />
                   <div>
-                    <div className="font-semibold">+7 (978) 947-62-54</div>
+                    <div className="font-semibold">+7 978 910-77-10</div>
                     <div className="text-sm opacity-75">Круглосуточно</div>
                   </div>
                 </div>
                 <div className="flex items-center">
                   <Icon name="Mail" className="h-6 w-6 mr-4 text-primary" />
                   <div>
-                    <div className="font-semibold">info@energoalliance-crimea.ru</div>
+                    <div className="font-semibold">crimea-alliance@list.ru</div>
                     <div className="text-sm opacity-75">Ответим в течение часа</div>
                   </div>
                 </div>
                 <div className="flex items-center">
                   <Icon name="MapPin" className="h-6 w-6 mr-4 text-primary" />
                   <div>
-                    <div className="font-semibold">г. Москва, ул. Профсоюзная, 78</div>
+                    <div className="font-semibold">г.Симферополь, ул. Комунальная, 20</div>
                     <div className="text-sm opacity-75">Офис открыт с 9:00 до 18:00</div>
                   </div>
                 </div>
@@ -429,10 +415,9 @@ const Index = () => {
             <div>
               <h3 className="font-semibold mb-4">Контакты</h3>
               <div className="space-y-2 text-sm text-slate-400">
-                <div>+7 (978) 713-39-59
-+7 (978) 910 77-10</div>
-                <div>info@energoalliance-crimea.ru</div>
-                <div>Москва, ул. Технологическая, 15</div>
+                <div>+7 978 910-77-10</div>
+                <div>crimea-alliance@list.ru</div>
+                <div>г.Симферополь, ул. Комунальная, 20</div>
               </div>
             </div>
           </div>
