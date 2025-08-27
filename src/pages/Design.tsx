@@ -1,118 +1,123 @@
+import Navigation from '@/components/Navigation';
+import Footer from '@/components/Footer';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
-import Navigation from '@/components/Navigation';
 import { Link } from 'react-router-dom';
 
 const Design = () => {
   const designServices = [
     {
-      title: "Проектирование АПС",
-      description: "Автоматические пожарные системы любой сложности",
+      id: "aps-soue",
+      title: "АПС и СОУЭ",
+      fullTitle: "Автоматическая пожарная сигнализация и система оповещения и управления эвакуацией",
+      description: "Комплексное проектирование систем обнаружения пожара и управления эвакуацией людей",
       icon: "Flame",
-      price: "от 45 ₽/м²",
+      image: "/img/b9bcf360-30ac-485a-be2e-dec0365a56cd.jpg",
       features: [
-        "Расчет зон обнаружения",
-        "Подбор датчиков и оборудования", 
+        "Расчет зон обнаружения и оповещения",
+        "Подбор датчиков и оповещателей", 
         "3D моделирование размещения",
         "Интеграция с системами пожаротушения"
-      ],
-      deliverables: [
-        "Техническое задание",
-        "Проектная документация",
-        "Спецификация оборудования",
-        "Монтажные схемы"
       ]
     },
     {
-      title: "Проектирование видеонаблюдения",
-      description: "Системы видеомониторинга с аналитикой",
+      id: "aupt",
+      title: "АУПТ",
+      fullTitle: "Автоматическая установка пожаротушения",
+      description: "Проектирование автоматических систем тушения пожара различных типов",
+      icon: "Droplets",
+      image: "/img/1e796181-fcf6-42ad-b5fb-3ae05b4e86a3.jpg",
+      features: [
+        "Гидравлический расчет",
+        "Выбор типа огнетушащего вещества",
+        "Расчет запаса огнетушащих веществ",
+        "Автоматизация управления"
+      ]
+    },
+    {
+      id: "sdu",
+      title: "СДУ",
+      fullTitle: "Система ДымоУдаления",
+      description: "Проектирование систем противодымной защиты зданий и сооружений",
+      icon: "Wind",
+      image: "/img/c44ca569-d84c-4c78-b2d6-b89ff93fd907.jpg",
+      features: [
+        "Аэродинамический расчет",
+        "Зонирование дымоудаления",
+        "Компенсация приточного воздуха",
+        "Автоматическое управление"
+      ]
+    },
+    {
+      id: "ovik",
+      title: "Система ОВиК",
+      fullTitle: "Отопление, вентиляция и кондиционирование",
+      description: "Проектирование климатических систем для создания комфортных условий",
+      icon: "Thermometer",
+      image: "/img/7ad82bc6-c26e-4dab-9b0a-64ea654726f3.jpg",
+      features: [
+        "Теплотехнический расчет",
+        "Подбор оборудования",
+        "Энергоэффективные решения",
+        "Автоматизация климат-контроля"
+      ]
+    },
+    {
+      id: "svn",
+      title: "СВН",
+      fullTitle: "Системы Видео Наблюдения",
+      description: "Проектирование современных систем видеонаблюдения с аналитикой",
       icon: "Camera",
-      price: "от 35 ₽/м²",
+      image: "/img/a41789b1-cb60-4701-81d4-2da8e84b43df.jpg",
       features: [
-        "Зонирование объекта",
-        "Расчет углов обзора камер",
-        "Планирование сетевой инфраструктуры",
-        "Интеграция с системами ИИ"
-      ],
-      deliverables: [
-        "Схема расстановки камер",
-        "Техническое решение",
-        "Расчет пропускной способности",
-        "План кабельных трасс"
+        "Зонирование территории",
+        "Расчет углов обзора",
+        "Видеоаналитика и AI",
+        "Интеграция с СКУД"
       ]
     },
     {
-      title: "Проектирование СКУД",
-      description: "Системы контроля и управления доступом",
-      icon: "Lock",
-      price: "от 28 ₽/м²",
+      id: "complex",
+      title: "Комплексное проектирование",
+      fullTitle: "Комплексное проектирование инженерных систем",
+      description: "Разработка всех разделов проекта с увязкой всех инженерных систем",
+      icon: "FileStack",
+      image: "/img/b53ee4b8-f1b1-43dd-91fb-a2d7a5f24351.jpg",
       features: [
-        "Логическое зонирование",
-        "Матрица доступа персонала",
-        "Интеграция с HR-системами",
-        "Биометрические технологии"
-      ],
-      deliverables: [
-        "Схема контролируемых зон",
-        "Алгоритмы управления",
-        "Техзадание на ПО",
-        "План размещения считывателей"
+        "Все виды инженерных систем",
+        "BIM-моделирование",
+        "Согласование разделов",
+        "Единая проектная документация"
       ]
     },
     {
-      title: "Проектирование ОПС",
-      description: "Охранно-пожарная сигнализация",
-      icon: "Shield",
-      price: "от 40 ₽/м²",
+      id: "osips",
+      title: "ОСИПС", 
+      fullTitle: "Обучаемая специализированная информационно-поисковая система",
+      description: "Проектирование интеллектуальных систем управления и мониторинга",
+      icon: "Brain",
+      image: "/img/c606f1f2-b0ed-4258-8095-a8fe885a3d8b.jpg",
       features: [
-        "Комплексный подход безопасности",
+        "Системы с искусственным интеллектом",
         "Интеграция всех подсистем",
-        "Централизованное управление",
-        "Резервирование критичных узлов"
-      ],
-      deliverables: [
-        "Общесистемное решение",
-        "Алгоритмы взаимодействия",
-        "Техническое задание",
-        "Схемы интеграции"
+        "Предиктивная аналитика",
+        "Автоматизация процессов"
       ]
     },
     {
-      title: "Проектирование СОУЭ",
-      description: "Системы оповещения и управления эвакуацией",
-      icon: "Speaker",
-      price: "от 32 ₽/м²",
+      id: "electrical",
+      title: "Электроснабжение и Электроосвещение",
+      fullTitle: "Системы электроснабжения и освещения",
+      description: "Проектирование надежных систем электроснабжения и энергоэффективного освещения",
+      icon: "Zap",
+      image: "/img/1d633396-f4a4-41f6-b936-0b31298dd813.jpg",
       features: [
-        "Расчет звукового покрытия",
-        "Зональное управление",
-        "Речевые сообщения",
-        "Световые табло эвакуации"
-      ],
-      deliverables: [
-        "Акустический расчет",
-        "Схема зонирования",
-        "Алгоритмы оповещения",
-        "План эвакуации"
-      ]
-    },
-    {
-      title: "BIM-проектирование",
-      description: "3D моделирование инженерных систем",
-      icon: "Layers",
-      price: "от 65 ₽/м²",
-      features: [
-        "Информационное моделирование",
-        "Коллизионный анализ",
-        "4D планирование",
-        "Жизненный цикл объекта"
-      ],
-      deliverables: [
-        "BIM модель объекта",
-        "Отчет о коллизиях",
-        "Календарный план",
-        "Техническая документация"
+        "Расчет электрических нагрузок",
+        "Выбор и расстановка оборудования",
+        "Аварийное и эвакуационное освещение",
+        "Молниезащита и заземление"
       ]
     }
   ];
@@ -153,29 +158,8 @@ const Design = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
-      {/* Навигация */}
-      <header className="bg-white/90 backdrop-blur-sm sticky top-0 z-50 border-b">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <Icon name="Shield" className="h-8 w-8 text-primary" />
-              <span className="text-xl font-bold text-secondary">ЭнергоАльянс-Крым</span>
-            </div>
-            <nav className="hidden md:flex space-x-8">
-              <Link to="/" className="text-slate-600 hover:text-primary transition-colors">Главная</Link>
-              <Link to="/services" className="text-slate-600 hover:text-primary transition-colors">Услуги</Link>
-              <Link to="/design" className="text-primary font-semibold">Проектирование</Link>
-              <Link to="/projects" className="text-slate-600 hover:text-primary transition-colors">Проекты</Link>
-              <Link to="/about" className="text-slate-600 hover:text-primary transition-colors">О компании</Link>
-              <Link to="/contact" className="text-slate-600 hover:text-primary transition-colors">Контакты</Link>
-            </nav>
-            <Button className="hidden md:block">
-              Консультация
-            </Button>
-          </div>
-        </div>
-      </header>
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
+      <Navigation />
 
       {/* Заголовок */}
       <section className="bg-gradient-to-r from-primary to-primary/80 text-white py-20">
@@ -210,7 +194,7 @@ const Design = () => {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-secondary mb-4">
+            <h2 className="text-3xl font-bold mb-4">
               Услуги проектирования
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -219,47 +203,36 @@ const Design = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {designServices.map((service, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {designServices.map((service) => (
+              <Card key={service.id} className="group hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 overflow-hidden">
+                <div className="aspect-video overflow-hidden">
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
                 <CardHeader>
-                  <div className="flex items-center justify-between mb-4">
-                    <Icon name={service.icon} className="h-10 w-10 text-primary" />
-                    <Badge variant="outline" className="font-semibold">
-                      {service.price}
-                    </Badge>
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="p-3 bg-blue-100 dark:bg-blue-900 rounded-lg">
+                      <Icon name={service.icon} className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+                    </div>
                   </div>
-                  <CardTitle className="text-xl">{service.title}</CardTitle>
-                  <CardDescription className="text-base">
-                    {service.description}
+                  <CardTitle className="text-lg">{service.title}</CardTitle>
+                  <CardDescription className="text-sm line-clamp-2">
+                    {service.fullTitle}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="space-y-4">
-                    <div>
-                      <h4 className="font-semibold mb-2 text-primary">Возможности:</h4>
-                      <ul className="space-y-1">
-                        {service.features.map((feature, idx) => (
-                          <li key={idx} className="flex items-start">
-                            <Icon name="Check" className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                            <span className="text-sm">{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    
-                    <div>
-                      <h4 className="font-semibold mb-2 text-primary">Результат:</h4>
-                      <ul className="space-y-1">
-                        {service.deliverables.map((item, idx) => (
-                          <li key={idx} className="flex items-start">
-                            <Icon name="FileText" className="h-4 w-4 text-blue-500 mr-2 mt-0.5 flex-shrink-0" />
-                            <span className="text-sm">{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
+                  <p className="text-sm text-slate-600 dark:text-slate-400 mb-4 line-clamp-3">
+                    {service.description}
+                  </p>
+                  <Link to={`/design/${service.id}`}>
+                    <Button variant="outline" className="w-full group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                      Подробнее
+                    </Button>
+                  </Link>
                 </CardContent>
               </Card>
             ))}
@@ -268,10 +241,10 @@ const Design = () => {
       </section>
 
       {/* Процесс проектирования */}
-      <section className="py-20 bg-white/50">
+      <section className="py-20 bg-slate-100 dark:bg-slate-800">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-secondary mb-4">
+            <h2 className="text-3xl font-bold mb-4">
               Этапы проектирования
             </h2>
             <p className="text-lg text-muted-foreground">
@@ -357,6 +330,8 @@ const Design = () => {
           </div>
         </div>
       </section>
+      
+      <Footer />
     </div>
   );
 };
