@@ -228,11 +228,9 @@ const Design = () => {
                   <p className="text-sm text-slate-600 dark:text-slate-400 mb-4 line-clamp-3">
                     {service.description}
                   </p>
-                  <Link to={`/design/${service.id}`}>
-                    <Button variant="outline" className="w-full group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                      Подробнее
-                    </Button>
-                  </Link>
+                  <Button variant="outline" className="w-full group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                    Подробнее
+                  </Button>
                 </CardContent>
               </Card>
             ))}

@@ -27,10 +27,19 @@ interface ContactFormProps {
   description?: string;
 }
 
-// EmailJS настройки - ЗАМЕНИТЕ НА СВОИ!
+// EmailJS настройки - ТРЕБУЕТСЯ НАСТРОЙКА!
+// Для настройки EmailJS:
+// 1. Зарегистрируйтесь на https://www.emailjs.com/
+// 2. Создайте сервис и шаблон
+// 3. Замените значения ниже на ваши
 const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID'; // Получите на emailjs.com
 const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID'; // Создайте шаблон на emailjs.com  
 const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY'; // Ваш публичный ключ
+
+// Проверка настроек EmailJS
+const isEmailJSConfigured = EMAILJS_SERVICE_ID !== 'YOUR_SERVICE_ID' && 
+                           EMAILJS_TEMPLATE_ID !== 'YOUR_TEMPLATE_ID' && 
+                           EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY';
 
 const ContactForm = ({ title = "Оставить заявку", description }: ContactFormProps) => {
   const [formData, setFormData] = useState<ContactFormData>({
@@ -78,8 +87,22 @@ const ContactForm = ({ title = "Оставить заявку", description }: C
     setIsLoading(true);
 
     try {
+      // Проверка настройки EmailJS
+      if (!isEmailJSConfigured) {
+        // Показываем предупреждение, если EmailJS не настроен
+        console.warn('EmailJS не настроен! Для отправки форм настройте EmailJS в файле ContactForm.tsx');
+        setDialogContent({
+          title: 'Внимание',
+          description: 'Функция отправки временно недоступна. Пожалуйста, свяжитесь с нами по телефону +7 (978) 777-77-77',
+          type: 'error'
+        });
+        setShowDialog(true);
+        setIsLoading(false);
+        return;
+      }
+      
       // Попытка отправить через EmailJS
-      if (EMAILJS_SERVICE_ID !== 'YOUR_SERVICE_ID') {
+      if (isEmailJSConfigured) {
         // Инициализация EmailJS
         emailjs.init(EMAILJS_PUBLIC_KEY);
         

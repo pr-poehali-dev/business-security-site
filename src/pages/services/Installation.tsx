@@ -150,10 +150,10 @@ const Installation = () => {
                 Оставить заявку
               </Button>
             </Link>
-            <Link to="/services">
+            <Link to="/">
               <Button size="lg" variant="outline">
                 <Icon name="ArrowLeft" className="mr-2" />
-                Все услуги
+                На главную
               </Button>
             </Link>
           </div>

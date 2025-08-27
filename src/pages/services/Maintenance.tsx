@@ -187,10 +187,10 @@ const Maintenance = () => {
                 Оставить заявку
               </Button>
             </Link>
-            <Link to="/services">
+            <Link to="/">
               <Button size="lg" variant="outline" className="bg-white/10 border-white/30 hover:bg-white/20">
                 <Icon name="ArrowLeft" className="mr-2" />
-                Все услуги
+                На главную
               </Button>
             </Link>
           </div>
