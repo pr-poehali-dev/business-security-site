@@ -44,18 +44,39 @@ const Navigation = () => {
   };
 
   const handleDropdownToggle = (path: string) => {
-    setOpenDropdown(openDropdown === path ? null : path);
+    if (window.innerWidth < 1024) {
+      // Для мобильных устройств
+      setOpenDropdown(openDropdown === path ? null : path);
+    } else {
+      // Для десктопа
+      setOpenDropdown(openDropdown === path ? null : path);
+    }
   };
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      if (!e.target || !(e.target as HTMLElement).closest('.dropdown-container')) {
-        setOpenDropdown(null);
+      // Только для десктопа закрываем при клике вне
+      if (window.innerWidth >= 1024) {
+        if (!e.target || !(e.target as HTMLElement).closest('.dropdown-container')) {
+          setOpenDropdown(null);
+        }
       }
     };
 
     document.addEventListener('click', handleClickOutside);
     return () => document.removeEventListener('click', handleClickOutside);
+  }, []);
+
+  // Закрытие меню при изменении размера экрана
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   return (
@@ -251,41 +272,53 @@ const Navigation = () => {
 
         {/* Мобильная навигация */}
         <div className={`
-          lg:hidden overflow-hidden transition-all duration-500 ease-in-out
-          ${isMenuOpen ? 'max-h-[600px] opacity-100 pb-4' : 'max-h-0 opacity-0'}
+          lg:hidden transition-all duration-500 ease-in-out
+          ${isMenuOpen ? 'max-h-[1000px] opacity-100 pb-4 overflow-visible' : 'max-h-0 opacity-0 overflow-hidden'}
         `}>
-          <nav className="mt-2 bg-background/50 backdrop-blur-xl rounded-2xl border border-border p-3">
+          <nav className="mt-2 bg-background/95 backdrop-blur-xl rounded-2xl border border-border shadow-xl p-3">
             <ul className="space-y-1">
               {navItems.map((item) => (
                 <li key={item.path}>
                   {'subItems' in item ? (
                     <div>
-                      <button
-                        onClick={() => handleDropdownToggle(item.path)}
-                        className={`
-                          w-full flex items-center justify-between px-4 py-3 rounded-xl
-                          text-sm font-medium transition-all duration-300
-                          ${location.pathname.includes('/services') || location.pathname === '/design'
-                            ? 'bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-lg'
-                            : 'text-foreground/80 hover:text-foreground hover:bg-accent'
-                          }
-                        `}
-                      >
-                        <div className="flex items-center">
+                      <div className="flex items-center">
+                        <Link
+                          to={item.path}
+                          onClick={() => setIsMenuOpen(false)}
+                          className={`
+                            flex-1 flex items-center px-4 py-3 rounded-l-xl
+                            text-sm font-medium transition-all duration-300
+                            ${location.pathname.includes('/services') || location.pathname === '/design'
+                              ? 'bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-lg'
+                              : 'text-foreground/80 hover:text-foreground hover:bg-accent'
+                            }
+                          `}
+                        >
                           <Icon name={item.icon} className="h-5 w-5 mr-3" />
                           <span>{item.label}</span>
-                        </div>
-                        <Icon 
-                          name="ChevronDown" 
-                          className={`h-4 w-4 transition-transform duration-300 ${
-                            openDropdown === item.path ? 'rotate-180' : ''
-                          }`} 
-                        />
-                      </button>
+                        </Link>
+                        <button
+                          onClick={() => handleDropdownToggle(item.path)}
+                          className={`
+                            px-3 py-3 rounded-r-xl transition-all duration-300 border-l
+                            ${location.pathname.includes('/services') || location.pathname === '/design'
+                              ? 'bg-gradient-to-r from-blue-600 to-cyan-500 text-white border-white/20'
+                              : 'text-foreground/80 hover:text-foreground hover:bg-accent border-border'
+                            }
+                          `}
+                        >
+                          <Icon 
+                            name="ChevronDown" 
+                            className={`h-4 w-4 transition-transform duration-300 ${
+                              openDropdown === item.path ? 'rotate-180' : ''
+                            }`} 
+                          />
+                        </button>
+                      </div>
                       
                       <div className={`
-                        mt-2 ml-4 space-y-1 overflow-hidden transition-all duration-300
-                        ${openDropdown === item.path ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}
+                        space-y-1 transition-all duration-300 overflow-hidden
+                        ${openDropdown === item.path ? 'max-h-[400px] opacity-100 mt-2 ml-4 pb-2' : 'max-h-0 opacity-0'}
                       `}>
                         {item.subItems.map((subItem) => (
                           <Link
@@ -299,7 +332,7 @@ const Navigation = () => {
                               flex items-center px-4 py-2.5 rounded-lg text-sm
                               transition-all duration-300
                               ${isActive(subItem.path)
-                                ? 'bg-blue-600/20 text-blue-600 dark:text-blue-400 font-medium'
+                                ? 'bg-gradient-to-r from-blue-600/20 to-cyan-500/20 text-blue-600 dark:text-blue-400 font-medium border border-blue-600/20'
                                 : 'text-foreground/70 hover:text-foreground hover:bg-accent'
                               }
                             `}
