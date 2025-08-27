@@ -1,170 +1,290 @@
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 import { Link, useLocation } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ThemeToggle from '@/components/ThemeToggle';
 
 const Navigation = () => {
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navItems = [
     { path: '/', label: 'Главная', icon: 'Home' },
     { 
       path: '/services', 
       label: 'Услуги', 
-      icon: 'Settings',
+      icon: 'Zap',
       subItems: [
+        { path: '/design', label: 'Проектирование', icon: 'PenTool' },
         { path: '/services/installation', label: 'Монтаж', icon: 'Wrench' },
-        { path: '/services/maintenance', label: 'Техническое Обслуживание (ТО)', icon: 'Shield' }
+        { path: '/services/maintenance', label: 'Обслуживание', icon: 'Shield' }
       ]
     },
-    { path: '/design', label: 'Проектирование', icon: 'PenTool' },
     { path: '/projects', label: 'Проекты', icon: 'Briefcase' },
-    { path: '/about', label: 'О компании', icon: 'Users' },
+    { path: '/about', label: 'О компании', icon: 'Building2' },
     { path: '/contact', label: 'Контакты', icon: 'Phone' }
   ];
 
-  const isActive = (path: string) => location.pathname === path;
+  const isActive = (path: string) => {
+    if (path === '/') {
+      return location.pathname === '/';
+    }
+    return location.pathname.startsWith(path);
+  };
+
+  const handleDropdownToggle = (path: string) => {
+    setOpenDropdown(openDropdown === path ? null : path);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (!e.target || !(e.target as HTMLElement).closest('.dropdown-container')) {
+        setOpenDropdown(null);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, []);
 
   return (
-    <header className="bg-slate-900/95 backdrop-blur-md sticky top-0 z-50 border-b border-slate-700/50 shadow-xl">
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
+    <header className={`
+      fixed top-0 left-0 right-0 z-50 transition-all duration-500
+      ${scrolled 
+        ? 'bg-background/80 backdrop-blur-xl border-b border-border shadow-lg' 
+        : 'bg-background/60 backdrop-blur-md'
+      }
+    `}>
+      <div className="container mx-auto px-4">
+        <div className={`flex items-center justify-between transition-all duration-500 ${scrolled ? 'py-3' : 'py-4'}`}>
           {/* Логотип */}
-          <Link to="/" className="flex items-center space-x-3 group">
+          <Link to="/" className="group flex items-center space-x-3">
             <div className="relative">
-              <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg blur opacity-30 group-hover:opacity-70 transition duration-300"></div>
-              <div className="relative bg-slate-900 p-2 rounded-lg">
-                <Icon name="Shield" className="h-8 w-8 text-blue-400" />
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-xl blur-lg opacity-0 group-hover:opacity-70 transition-all duration-500 group-hover:scale-110"></div>
+              <div className="relative bg-gradient-to-br from-blue-600 to-cyan-500 p-2.5 rounded-xl shadow-lg transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-3">
+                <Icon name="Zap" className="h-7 w-7 text-white" />
               </div>
             </div>
             <div className="flex flex-col">
-              <span className="text-xl font-bold text-white tracking-tight">ЭнергоАльянс-Крым</span>
-              <span className="text-xs text-slate-400 font-medium">Системы безопасности</span>
+              <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
+                ЭнергоАльянс
+              </span>
+              <span className="text-xs text-muted-foreground tracking-wider">КРЫМ</span>
             </div>
           </Link>
 
           {/* Десктопная навигация */}
-          <nav className="hidden lg:flex items-center space-x-1">
-            {navItems.map((item) => (
-              <div key={item.path} className="relative group">
-                {'subItems' in item ? (
-                  <>
-                    <button
-                      onClick={() => setOpenDropdown(openDropdown === item.path ? null : item.path)}
+          <nav className="hidden lg:flex items-center">
+            <ul className="flex items-center space-x-1">
+              {navItems.map((item) => (
+                <li key={item.path} className="relative dropdown-container">
+                  {'subItems' in item ? (
+                    <div className="relative">
+                      <button
+                        onClick={() => handleDropdownToggle(item.path)}
+                        className={`
+                          relative px-5 py-2.5 rounded-xl text-sm font-medium
+                          transition-all duration-300 flex items-center group
+                          ${location.pathname.includes('/services') || location.pathname === '/design'
+                            ? 'text-white' 
+                            : 'text-foreground/80 hover:text-foreground'
+                          }
+                        `}
+                      >
+                        {location.pathname.includes('/services') || location.pathname === '/design' && (
+                          <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-xl"></div>
+                        )}
+                        <div className="relative flex items-center">
+                          <Icon name={item.icon} className="h-4 w-4 mr-2" />
+                          <span>{item.label}</span>
+                          <Icon 
+                            name="ChevronDown" 
+                            className={`h-3 w-3 ml-1.5 transition-transform duration-300 ${
+                              openDropdown === item.path ? 'rotate-180' : ''
+                            }`} 
+                          />
+                        </div>
+                        {!(location.pathname.includes('/services') || location.pathname === '/design') && (
+                          <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-600/0 via-blue-600/20 to-cyan-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        )}
+                      </button>
+                      
+                      {/* Mega Menu Dropdown */}
+                      <div className={`
+                        absolute top-full mt-2 w-72 p-2 bg-background/95 backdrop-blur-xl
+                        rounded-2xl shadow-2xl border border-border
+                        transition-all duration-300 transform origin-top-left
+                        ${openDropdown === item.path 
+                          ? 'opacity-100 scale-100 translate-y-0 visible' 
+                          : 'opacity-0 scale-95 -translate-y-2 invisible pointer-events-none'
+                        }
+                      `}>
+                        <div className="space-y-1">
+                          {item.subItems.map((subItem, index) => (
+                            <Link
+                              key={subItem.path}
+                              to={subItem.path}
+                              onClick={() => setOpenDropdown(null)}
+                              className={`
+                                group flex items-center space-x-3 px-4 py-3 rounded-xl
+                                transition-all duration-300 relative overflow-hidden
+                                ${isActive(subItem.path)
+                                  ? 'bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-lg'
+                                  : 'hover:bg-accent text-foreground/80 hover:text-foreground'
+                                }
+                              `}
+                              style={{ animationDelay: `${index * 50}ms` }}
+                            >
+                              <div className={`
+                                p-2 rounded-lg transition-all duration-300
+                                ${isActive(subItem.path) 
+                                  ? 'bg-white/20' 
+                                  : 'bg-accent group-hover:bg-blue-600/10'
+                                }
+                              `}>
+                                <Icon name={subItem.icon} className="h-5 w-5" />
+                              </div>
+                              <div className="flex-1">
+                                <p className="font-medium">{subItem.label}</p>
+                                <p className={`text-xs mt-0.5 ${
+                                  isActive(subItem.path) ? 'text-white/80' : 'text-muted-foreground'
+                                }`}>
+                                  {subItem.path === '/design' && 'АПС, АУПТ, СДУ и другие'}
+                                  {subItem.path === '/services/installation' && 'Профессиональный монтаж'}
+                                  {subItem.path === '/services/maintenance' && 'Сервис и обслуживание'}
+                                </p>
+                              </div>
+                              {!isActive(subItem.path) && (
+                                <Icon name="ArrowRight" className="h-4 w-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+                              )}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <Link
+                      to={item.path}
                       className={`
-                        relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ease-in-out
-                        group hover:scale-105 hover:shadow-lg flex items-center
-                        ${location.pathname.startsWith(item.path)
-                          ? 'text-white bg-gradient-to-r from-blue-600 to-purple-600 shadow-lg shadow-blue-500/25' 
-                          : 'text-slate-300 hover:text-white hover:bg-slate-800/50'
+                        relative px-5 py-2.5 rounded-xl text-sm font-medium
+                        transition-all duration-300 flex items-center group
+                        ${isActive(item.path) 
+                          ? 'text-white' 
+                          : 'text-foreground/80 hover:text-foreground'
                         }
                       `}
                     >
-                      <Icon name={item.icon} className="h-4 w-4 mr-2" />
-                      <span>{item.label}</span>
-                      <Icon name="ChevronDown" className="h-3 w-3 ml-1" />
-                    </button>
-                    
-                    {/* Dropdown */}
-                    <div className={`
-                      absolute top-full mt-2 w-64 bg-slate-900 rounded-lg shadow-xl border border-slate-700/50
-                      transition-all duration-300 transform origin-top
-                      ${openDropdown === item.path ? 'opacity-100 scale-y-100 visible' : 'opacity-0 scale-y-0 invisible'}
-                    `}>
-                      {item.subItems.map((subItem) => (
-                        <Link
-                          key={subItem.path}
-                          to={subItem.path}
-                          onClick={() => setOpenDropdown(null)}
-                          className="block px-4 py-3 text-sm text-slate-300 hover:text-white hover:bg-slate-800/50 transition-colors"
-                        >
-                          <div className="flex items-center space-x-2">
-                            <Icon name={subItem.icon} className="h-4 w-4" />
-                            <span>{subItem.label}</span>
-                          </div>
-                        </Link>
-                      ))}
-                    </div>
-                  </>
-                ) : (
-                  <Link
-                    to={item.path}
-                    className={`
-                      relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ease-in-out
-                      group hover:scale-105 hover:shadow-lg
-                      ${isActive(item.path) 
-                        ? 'text-white bg-gradient-to-r from-blue-600 to-purple-600 shadow-lg shadow-blue-500/25' 
-                        : 'text-slate-300 hover:text-white hover:bg-slate-800/50'
-                      }
-                    `}
-                  >
-                    <div className="flex items-center space-x-2">
-                      <Icon name={item.icon} className="h-4 w-4" />
-                      <span>{item.label}</span>
-                    </div>
-                    
-                    {/* Анимированная подсветка */}
-                    {!isActive(item.path) && (
-                      <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-blue-600/10 to-purple-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    )}
-                  </Link>
-                )}
-              </div>
-            ))}
+                      {isActive(item.path) && (
+                        <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-xl"></div>
+                      )}
+                      <div className="relative flex items-center">
+                        <Icon name={item.icon} className="h-4 w-4 mr-2" />
+                        <span>{item.label}</span>
+                      </div>
+                      {!isActive(item.path) && (
+                        <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-600/0 via-blue-600/20 to-cyan-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      )}
+                    </Link>
+                  )}
+                </li>
+              ))}
+            </ul>
           </nav>
 
-          {/* CTA кнопка */}
-          <div className="hidden lg:flex items-center space-x-4">
+          {/* CTA и действия */}
+          <div className="hidden lg:flex items-center space-x-3">
             <ThemeToggle />
+            <div className="h-8 w-px bg-border"></div>
             <Button 
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold px-6 py-2 rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+              size="sm"
+              className="relative bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white font-medium rounded-xl shadow-lg hover:shadow-xl transform transition-all duration-300 hover:scale-105 px-5"
             >
-              <Icon name="MessageCircle" className="mr-2 h-4 w-4" />
-              Консультация
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-xl blur-md opacity-50"></div>
+              <div className="relative flex items-center">
+                <Icon name="Phone" className="mr-2 h-4 w-4" />
+                <span>Заказать звонок</span>
+              </div>
             </Button>
           </div>
 
-          {/* Мобильное меню кнопка */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-2 rounded-lg bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 transition-all duration-300"
-          >
-            <Icon name={isMenuOpen ? "X" : "Menu"} className="h-6 w-6" />
-          </button>
+          {/* Мобильная кнопка меню */}
+          <div className="flex items-center space-x-3 lg:hidden">
+            <ThemeToggle />
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className={`
+                relative p-2.5 rounded-xl transition-all duration-300
+                ${isMenuOpen 
+                  ? 'bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-lg' 
+                  : 'bg-accent hover:bg-accent/80 text-foreground'
+                }
+              `}
+            >
+              <div className="relative w-6 h-6 flex items-center justify-center">
+                <span className={`
+                  absolute h-0.5 w-5 bg-current transform transition-all duration-300
+                  ${isMenuOpen ? 'rotate-45' : '-translate-y-2'}
+                `}></span>
+                <span className={`
+                  absolute h-0.5 w-5 bg-current transition-all duration-300
+                  ${isMenuOpen ? 'opacity-0' : 'opacity-100'}
+                `}></span>
+                <span className={`
+                  absolute h-0.5 w-5 bg-current transform transition-all duration-300
+                  ${isMenuOpen ? '-rotate-45' : 'translate-y-2'}
+                `}></span>
+              </div>
+            </button>
+          </div>
         </div>
 
         {/* Мобильная навигация */}
         <div className={`
-          lg:hidden transition-all duration-500 ease-in-out overflow-hidden
-          ${isMenuOpen ? 'max-h-96 opacity-100 mt-4' : 'max-h-0 opacity-0'}
+          lg:hidden overflow-hidden transition-all duration-500 ease-in-out
+          ${isMenuOpen ? 'max-h-[600px] opacity-100 pb-4' : 'max-h-0 opacity-0'}
         `}>
-          <nav className="bg-slate-800/50 rounded-xl p-4 backdrop-blur-sm border border-slate-700/50">
-            <div className="space-y-2">
+          <nav className="mt-2 bg-background/50 backdrop-blur-xl rounded-2xl border border-border p-3">
+            <ul className="space-y-1">
               {navItems.map((item) => (
-                <div key={item.path}>
+                <li key={item.path}>
                   {'subItems' in item ? (
-                    <>
+                    <div>
                       <button
-                        onClick={() => setOpenDropdown(openDropdown === item.path ? null : item.path)}
+                        onClick={() => handleDropdownToggle(item.path)}
                         className={`
-                          w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium transition-all duration-300
-                          ${location.pathname.startsWith(item.path)
-                            ? 'text-white bg-gradient-to-r from-blue-600 to-purple-600 shadow-lg'
-                            : 'text-slate-300 hover:text-white hover:bg-slate-700/50'
+                          w-full flex items-center justify-between px-4 py-3 rounded-xl
+                          text-sm font-medium transition-all duration-300
+                          ${location.pathname.includes('/services') || location.pathname === '/design'
+                            ? 'bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-lg'
+                            : 'text-foreground/80 hover:text-foreground hover:bg-accent'
                           }
                         `}
                       >
-                        <Icon name={item.icon} className="h-5 w-5" />
-                        <span className="flex-1 text-left">{item.label}</span>
-                        <Icon name="ChevronDown" className={`h-4 w-4 transition-transform ${openDropdown === item.path ? 'rotate-180' : ''}`} />
+                        <div className="flex items-center">
+                          <Icon name={item.icon} className="h-5 w-5 mr-3" />
+                          <span>{item.label}</span>
+                        </div>
+                        <Icon 
+                          name="ChevronDown" 
+                          className={`h-4 w-4 transition-transform duration-300 ${
+                            openDropdown === item.path ? 'rotate-180' : ''
+                          }`} 
+                        />
                       </button>
                       
-                      {/* Mobile Dropdown */}
                       <div className={`
-                        mt-2 ml-8 space-y-1 overflow-hidden transition-all duration-300
+                        mt-2 ml-4 space-y-1 overflow-hidden transition-all duration-300
                         ${openDropdown === item.path ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}
                       `}>
                         {item.subItems.map((subItem) => (
@@ -175,42 +295,47 @@ const Navigation = () => {
                               setIsMenuOpen(false);
                               setOpenDropdown(null);
                             }}
-                            className="flex items-center space-x-2 px-4 py-2 text-sm text-slate-400 hover:text-white hover:bg-slate-700/30 rounded-lg transition-colors"
+                            className={`
+                              flex items-center px-4 py-2.5 rounded-lg text-sm
+                              transition-all duration-300
+                              ${isActive(subItem.path)
+                                ? 'bg-blue-600/20 text-blue-600 dark:text-blue-400 font-medium'
+                                : 'text-foreground/70 hover:text-foreground hover:bg-accent'
+                              }
+                            `}
                           >
-                            <Icon name={subItem.icon} className="h-4 w-4" />
+                            <Icon name={subItem.icon} className="h-4 w-4 mr-2.5" />
                             <span>{subItem.label}</span>
                           </Link>
                         ))}
                       </div>
-                    </>
+                    </div>
                   ) : (
                     <Link
                       to={item.path}
                       onClick={() => setIsMenuOpen(false)}
                       className={`
-                        flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium transition-all duration-300
+                        flex items-center px-4 py-3 rounded-xl text-sm font-medium
+                        transition-all duration-300
                         ${isActive(item.path)
-                          ? 'text-white bg-gradient-to-r from-blue-600 to-purple-600 shadow-lg'
-                          : 'text-slate-300 hover:text-white hover:bg-slate-700/50'
+                          ? 'bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-lg'
+                          : 'text-foreground/80 hover:text-foreground hover:bg-accent'
                         }
                       `}
                     >
-                      <Icon name={item.icon} className="h-5 w-5" />
+                      <Icon name={item.icon} className="h-5 w-5 mr-3" />
                       <span>{item.label}</span>
                     </Link>
                   )}
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
             
-            <div className="mt-4 pt-4 border-t border-slate-700/50">
-              <div className="flex items-center justify-between gap-4">
-                <ThemeToggle />
-                <Button className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-lg shadow-lg">
-                  <Icon name="MessageCircle" className="mr-2 h-4 w-4" />
-                  Консультация
-                </Button>
-              </div>
+            <div className="mt-4 pt-4 border-t border-border">
+              <Button className="w-full bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white font-medium rounded-xl shadow-lg">
+                <Icon name="Phone" className="mr-2 h-4 w-4" />
+                Заказать звонок
+              </Button>
             </div>
           </nav>
         </div>
