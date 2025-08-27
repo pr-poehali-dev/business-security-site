@@ -10,6 +10,13 @@ import ContactForm from '@/components/ContactForm';
 const Index = () => {
   const services = [
     {
+      title: "Проектирование",
+      description: "Разработка проектной документации для инженерных систем",
+      icon: "PenTool",
+      image: "/img/b2738f2e-935b-4438-8047-25c235fa9e64.jpg",
+      features: ["Проекты АПС и СОУЭ", "Электроснабжение", "Слаботочные системы"]
+    },
+    {
       title: "Монтаж",
       description: "Профессиональный монтаж электрооборудования и инженерных систем",
       icon: "Wrench",
@@ -17,18 +24,11 @@ const Index = () => {
       features: ["Электромонтажные работы", "Установка оборудования", "Пусконаладочные работы"]
     },
     {
-      title: "Подготовка проектной документации",
-      description: "Полный комплект технической документации для объектов",
-      icon: "FileText",
-      image: "/img/5f087d7d-2bff-4a21-ba73-8e8e72e99564.jpg",
-      features: ["Рабочие чертежи", "Сметная документация", "Согласование в инстанциях"]
-    },
-    {
-      title: "Промышленная автоматизация",
-      description: "Системы управления и контроля (услуга в разработке!)",
-      icon: "Settings",
-      image: "/img/ba8acdc6-6289-4879-ac92-6873b1db705b.jpg",
-      features: ["АСУТП", "Диспетчеризация", "Автоматическое управление"]
+      title: "Обслуживание и ремонт",
+      description: "Техническое обслуживание оборудования",
+      icon: "Shield",
+      image: "/img/690dd835-afef-4567-80a7-a18bfa2eabe5.jpg",
+      features: ["Плановое ТО", "Аварийный ремонт", "Модернизация"]
     },
     {
       title: "Электромонтажные работы",
@@ -38,11 +38,11 @@ const Index = () => {
       features: ["Силовые кабели", "Электрощитовое оборудование", "Заземление"]
     },
     {
-      title: "Обслуживание и ремонт",
-      description: "Техническое обслуживание оборудования",
-      icon: "Wrench",
-      image: "/img/690dd835-afef-4567-80a7-a18bfa2eabe5.jpg",
-      features: ["Плановое ТО", "Аварийный ремонт", "Модернизация"]
+      title: "Подготовка проектной документации",
+      description: "Полный комплект технической документации для объектов",
+      icon: "FileText",
+      image: "/img/5f087d7d-2bff-4a21-ba73-8e8e72e99564.jpg",
+      features: ["Рабочие чертежи", "Сметная документация", "Согласование в инстанциях"]
     },
     {
       title: "Системы резервного питания",
@@ -52,18 +52,18 @@ const Index = () => {
       features: ["Источники бесперебойного питания", "Дизельные генераторы", "АВР системы"]
     },
     {
-      title: "Проектирование",
-      description: "Разработка проектной документации для инженерных систем",
-      icon: "PenTool",
-      image: "/img/b2738f2e-935b-4438-8047-25c235fa9e64.jpg",
-      features: ["Проекты АПС и СОУЭ", "Электроснабжение", "Слаботочные системы"]
-    },
-    {
       title: "Молниезащита и заземление",
       description: "Защита объектов от перенапряжений",
       icon: "Zap",
       image: "/img/40dc4d51-e213-4707-bcc4-fe5071228f33.jpg",
       features: ["Проектирование молниезащиты", "Контур заземления", "Измерения сопротивления"]
+    },
+    {
+      title: "Промышленная автоматизация",
+      description: "Системы управления и контроля (услуга в разработке!)",
+      icon: "Settings",
+      image: "/img/ba8acdc6-6289-4879-ac92-6873b1db705b.jpg",
+      features: ["АСУТП", "Диспетчеризация", "Автоматическое управление"]
     }
   ];
 
@@ -111,7 +111,7 @@ const Index = () => {
       <Navigation />
 
       {/* Hero секция */}
-      <section className="relative min-h-screen py-32 px-4 overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center px-4 py-16 md:py-32 overflow-hidden">
         {/* Главное изображение */}
         <div className="absolute inset-0 z-0">
           <img 
@@ -124,15 +124,15 @@ const Index = () => {
         
         <div className="container mx-auto text-center relative z-10">
           <div className="max-w-4xl mx-auto">
-            <Badge className="mb-6 bg-blue-600 hover:bg-blue-700 animate-slide-up text-white">Энергетика будущего</Badge>
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight animate-slide-up">
+            <Badge className="mb-4 md:mb-6 bg-blue-600 hover:bg-blue-700 animate-slide-up text-white">Технологии будущего</Badge>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-6 leading-tight animate-slide-up">
               Электричество
               <br />
               <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">под ключ</span>
             </h1>
-            <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto animate-fade-in">
-              Проектируем, монтируем и обслуживаем энергетические системы любой сложности. 
-              Более 10 лет опыта работы с коммерческими и промышленными объектами.
+            <p className="text-lg md:text-xl text-gray-300 mb-6 md:mb-8 max-w-3xl mx-auto animate-fade-in px-4">
+              Проектируем, монтируем и обслуживаем объекты любой сложности. 
+              Более 10 лет опыта работы с коммерческими, частными и промышленными объектами.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up">
               <Button size="lg" className="px-8 bg-blue-600 hover:bg-blue-700 hover-scale">
@@ -168,16 +168,16 @@ const Index = () => {
       </section>
 
       {/* Услуги */}
-      <section id="services" className="py-20 px-4 bg-white">
+      <section id="services" className="py-12 md:py-20 px-4 bg-white">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-secondary mb-4">Наши услуги</h2>
-            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-4">Наши услуги</h2>
+            <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto">
               Полный спектр услуг в области электроэнергетики и инженерных систем
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
             {services.map((service, index) => (
               <Card key={index} className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group animate-slide-up hover-scale" style={{animationDelay: `${index * 0.1}s`}}>
                 <div className="relative overflow-hidden rounded-t-lg">
@@ -212,11 +212,11 @@ const Index = () => {
       </section>
 
       {/* Проекты */}
-      <section id="projects" className="py-20 px-4 bg-slate-50">
+      <section id="projects" className="py-12 md:py-20 px-4 bg-slate-50">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-secondary mb-4">Наши проекты</h2>
-            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-4">Наши проекты</h2>
+            <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto">
               Реализованные объекты с полной технической документацией
             </p>
           </div>
@@ -252,11 +252,11 @@ const Index = () => {
       </section>
 
       {/* О компании */}
-      <section id="about" className="py-20 px-4 bg-white">
+      <section id="about" className="py-12 md:py-20 px-4 bg-white">
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-4xl font-bold text-secondary mb-6">О компании</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-4 md:mb-6">О компании</h2>
               <p className="text-lg text-slate-600 mb-6">
                 Более 10 лет специализируемся на создании комплексных решений в области 
                 технических средств безопасности. Наша команда инженеров обеспечивает 
@@ -287,16 +287,16 @@ const Index = () => {
       </section>
 
       {/* Сертификаты */}
-      <section id="certificates" className="py-20 px-4 bg-slate-50">
+      <section id="certificates" className="py-12 md:py-20 px-4 bg-slate-50">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-secondary mb-4">Сертификаты и лицензии</h2>
-            <p className="text-xl text-slate-600">
+            <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-4">Сертификаты и лицензии</h2>
+            <p className="text-lg md:text-xl text-slate-600">
               Подтвержденная квалификация для работы с системами безопасности
             </p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
             {certificates.map((cert, index) => (
               <Card key={index} className="text-center hover:shadow-xl transition-all duration-300">
                 <CardContent className="p-8">
@@ -314,11 +314,11 @@ const Index = () => {
       </section>
 
       {/* Контакты */}
-      <section id="contact" className="py-20 px-4 bg-secondary text-white">
+      <section id="contact" className="py-12 md:py-20 px-4 bg-secondary text-white">
         <div className="container mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12">
-            <div>
-              <h2 className="text-4xl font-bold mb-6">Свяжитесь с нами</h2>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+            <div className="order-2 lg:order-1">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 md:mb-6">Свяжитесь с нами</h2>
               <p className="text-lg mb-8 opacity-90">
                 Оставьте заявку и наш специалист свяжется с вами в течение 30 минут
               </p>
@@ -348,7 +348,7 @@ const Index = () => {
               </div>
             </div>
             
-            <div>
+            <div className="order-1 lg:order-2">
               <Card>
                 <CardHeader>
                   <CardTitle>Запросить консультацию</CardTitle>
@@ -386,9 +386,9 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-slate-900 text-white py-12 px-4">
+      <footer className="bg-slate-900 text-white py-8 md:py-12 px-4">
         <div className="container mx-auto">
-          <div className="grid md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             <div>
               <div className="flex items-center space-x-2 mb-4">
                 <Icon name="Shield" className="h-6 w-6 text-primary" />

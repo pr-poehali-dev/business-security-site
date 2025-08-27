@@ -67,7 +67,7 @@ const Navigation = () => {
       }
     `}>
       <div className="container mx-auto px-4">
-        <div className={`flex items-center justify-between transition-all duration-500 ${scrolled ? 'py-3' : 'py-4'}`}>
+        <div className={`flex items-center justify-between transition-all duration-500 ${scrolled ? 'py-2.5 md:py-3' : 'py-3 md:py-4'}`}>
           {/* Логотип */}
           <Link to="/" className="group flex items-center space-x-3">
             <div className="relative">
@@ -77,10 +77,10 @@ const Navigation = () => {
               </div>
             </div>
             <div className="flex flex-col">
-              <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
+              <span className="text-lg md:text-xl font-bold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
                 ЭнергоАльянс
               </span>
-              <span className="text-xs text-muted-foreground tracking-wider">КРЫМ</span>
+              <span className="text-[10px] md:text-xs text-muted-foreground tracking-wider">КРЫМ</span>
             </div>
           </Link>
 
