@@ -26,7 +26,7 @@ const Navigation = () => {
       label: 'Услуги', 
       icon: 'Zap',
       subItems: [
-        { path: '/design', label: 'Проектирование', icon: 'PenTool' },
+        { path: '/services/design', label: 'Проектирование', icon: 'PenTool' },
         { path: '/services/installation', label: 'Монтаж', icon: 'Wrench' },
         { path: '/services/maintenance', label: 'Обслуживание', icon: 'Shield' }
       ]
@@ -102,7 +102,7 @@ const Navigation = () => {
                           }
                         `}
                       >
-                        {location.pathname.includes('/services') || location.pathname === '/design' && (
+                        {(location.pathname.includes('/services') || location.pathname.includes('/design')) && (
                           <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-xl"></div>
                         )}
                         <div className="relative flex items-center">
@@ -115,7 +115,7 @@ const Navigation = () => {
                             }`} 
                           />
                         </div>
-                        {!(location.pathname.includes('/services') || location.pathname === '/design') && (
+                        {!(location.pathname.includes('/services') || location.pathname.includes('/design')) && (
                           <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-600/0 via-blue-600/20 to-cyan-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         )}
                       </button>
@@ -160,7 +160,7 @@ const Navigation = () => {
                                 <p className={`text-xs mt-0.5 ${
                                   isActive(subItem.path) ? 'text-white/80' : 'text-muted-foreground'
                                 }`}>
-                                  {subItem.path === '/design' && 'АПС, АУПТ, СДУ и другие'}
+                                  {subItem.path === '/services/design' && 'АПС, АУПТ, СДУ и другие'}
                                   {subItem.path === '/services/installation' && 'Профессиональный монтаж'}
                                   {subItem.path === '/services/maintenance' && 'Сервис и обслуживание'}
                                 </p>
